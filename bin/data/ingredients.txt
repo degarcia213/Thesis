@@ -1,0 +1,55 @@
+ingredient, grilled ingredient, boiled ingredient, ground ingredient
+uncooked rice, warm rice, barely boiled rice, rice flour
+kettle of water, kettle of hot water, removeMe, kettle of water
+kettle of hot water, kettle of boiling water, removeMe, kettle of water
+kettle of boiling water, kettle of boiling water, removeMe, kettle of hot water
+warm rice, browned rice, barely boiled rice, ruined ingredient
+browned rice, toasted rice, ruined ingredient, ruined ingredient
+toasted rice, dry cracked rice, toasted rice tea, toasted rice powder
+dry cracked rice, ruined ingredient, ruined ingredient, ruined ingredient
+barely boiled rice, ruined ingredient, lightly boiled rice, ruined ingredient
+lightly boiled rice, crunchy bottom rice, boiled rice, ruined ingredient
+boiled rice, crunchy bottom rice, soggy rice, mochi
+soggy rice, ruined ingredient, ruined ingredient, ruined ingredient
+ruined ingredient, ruined ingredient, ruined ingredient, ruined ingredient
+mochi, yakimochi, ruined ingredient, ruined ingredient
+yakimochi, ruined ingredient, ruined ingredient, ruined ingredient
+green tea leaves, ruined ingredient, ruined ingredient, matcha powder
+rice flour, ruined ingredient, ruined ingredient, ruined ingredient
+toasted rice powder, ruined ingredient, ruined ingredient, ruined ingredient
+matcha powder, ruined ingredient, ruined ingredient, ruined ingredient
+matcha tea, ruined ingredient, ruined ingredient, ruined ingredient
+crunchy bottom rice, ruined ingredient, ruined ingredient, ruined ingredient
+toasted rice tea, ruined ingredient, ruined ingredient, ruined ingredient
+chazuke, ruined ingredient, ruined ingredient, ruined ingredient
+raw genmaicha, ruined ingredient, genmaicha, ruined ingredient
+sugar, caramel, simple syrup, powdered sugar
+caramel, burnt caramel, ruined ingredient, ruined ingredient
+simple syrup, ruined ingredient, ruined ingredient, ruined ingredient
+powdered sugar, ruined ingredient, ruined ingredient, ruined ingredient
+sesame seeds, black sesame seeds, ruined ingredient, sesame powder
+black sesame seeds, ruined ingredient, ruined ingredient, ruined ingredient
+sesame powder, ruined ingredient, ruined ingredient, ruined ingredient
+red beans, ruined ingredient, hot wet red beans, ruined ingredient
+hot wet red beans, ruined ingredient, boiled red beans, ruined ingredient
+boiled red beans, ruined ingredient, ruined ingredient, mashed red beans
+mashed red beans, ruined ingredient, ruined ingredient, ruined ingredient
+sweet red bean paste, ruined ingredient, ruined ingredient, ruined ingredient
+daifuku, ruined ingredient, ruined ingredient, ruined ingredient
+green tea mochi, ruined ingredient, ruined ingredient, ruined ingredient
+kurogoma mochi, ruined ingredient, ruined ingredient, ruined ingredient
+goma mochi, ruined ingredient, ruined ingredient, ruined ingredient
+green tea daifuku, ruined ingredient, ruined ingredient, ruined ingredient
+kurogoma daifuku, ruined ingredient, ruined ingredient, ruined ingredient
+glow worms, warm glow worms, lightly boiled glow worms, sticky glow worms
+warm glow worms, crispy glow worms, lightly boiled glow worms, sticky glow worms
+crispy glow worms, crunchy glow worms, ruined ingredient, sticky glow worms
+crunchy glow worms, ruined ingredient, ruined ingredient, ruined ingredient
+lightly boiled glow worms, crispy glow worms, boiled glow worms, sticky glow worms
+boiled glow worms, crispy boiled glow worms, pale tasteless glow worms, ruined ingredient
+crispy boiled glow worms, ruined ingredient, ruined ingredient, ruined ingredient
+pale tasteless glow worms, ruined ingredient, pale tasteless glow worms, ruined ingredient
+sticky glow worms, ruined ingredient, ruined ingredient, glow worm paste
+glow worm paste, ruined ingredient, ruined ingredient, glow worm paste
+removeMe, removeMe, removeMe, removeMe
+<--- LAST --->
