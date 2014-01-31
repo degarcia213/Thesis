@@ -51,6 +51,84 @@ void Ingredient::update(){
         getIngredientInfo();
     }
     
+    switch (form){
+            ///// --- CHECK TEXTURES FOR SLAB
+        case SLAB:
+            switch (hardness) {
+                case ROCK_SOLID:
+                    texture = ROCK_LIKE;
+                    break;
+                case HARD:
+                    texture = ROCK_LIKE;
+                    break;
+                case FIRM:
+                    //----------------------------- firm slab
+                    texture = DENSE;
+                    break;
+                case TOOTHY:
+                    //----------------------------- toothy slab
+                    texture = CRISPY;
+                    break;
+                case CHEWY:
+                    //----------------------------- CHEWY SLAB
+                    break;
+                case SOFT:
+                    //----------------------------- SOFT SLAB
+                    switch (wetness)
+                {
+                    case SOAKED_THROUGH:
+                        texture = SOGGY;
+                        break;
+                    case DRIPPING:
+                        texture = JUICY;
+                        break;
+                    case DAMP:
+                        texture = MOIST;
+                        break;
+                    case DRY:
+                        break;
+                }
+                    break;
+                case AIRY:
+                    /// AIRY SLAB
+                    switch (wetness)
+                {
+                    case SOAKED_THROUGH:
+                        texture = SOGGY;
+                        break;
+                    case DRIPPING:
+                        break;
+                    case DAMP:
+                        texture = MOIST;
+                        break;
+                    case DRY:
+                        texture = FLUFFY;
+                        break;
+                }
+                    break;
+            }
+            break;
+        case SLICED:
+            break;
+        case CUBES:
+            break;
+        case PASTE:
+            break;
+        case PUREE:
+            break;
+        case SYRUP:
+            break;
+        case POWDER:
+            break;
+        case LIQUID:
+            break;
+        case GRAINS:
+            break;
+        case NOODLES:
+            break;
+    }
+    
+    
 }
 
     /// --- ESTABLISH INGREDIENT TYPE AND RESULTS

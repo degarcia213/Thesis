@@ -68,6 +68,7 @@ enum Ing_State{
     FRESH,
     PICKLED,
     ROTTEN,
+    OVER_RIPE,
     DRIED,
     SALTED,
     STEAMED,
@@ -76,13 +77,65 @@ enum Ing_State{
     GRILLED,
     FRIED,
     SMOKED,
-    
 };
 
+enum TEXTURES{
+    ROCK_LIKE,
+    STICKY,
+    PASTY,
+    CREAMY,
+    SANDY,
+    CRISPY,
+    CRISP,
+    SOUPY,
+    SOGGY,
+    DENSE,
+    CRUNCHY,
+    JUICY,
+    MOIST,
+    FLUFFY
+};
+
+enum FORMS {
+    SLAB,
+    SLICED,
+    CUBES,
+    GRAINS,
+    NOODLES,
+    PASTE,
+    POWDER,
+    PUREE,
+    SYRUP,
+    LIQUID,
+};
+
+enum HARDNESSES {
+    ROCK_SOLID,
+    HARD,
+    FIRM,
+    TOOTHY,
+    CHEWY,
+    SOFT,
+    AIRY,
+};
+
+enum WETNESSES {
+    SOAKED_THROUGH,
+    DRIPPING,
+    DAMP,
+    DRY
+};
 
 class Ingredient{
 public:
     string type;
+    
+    
+    TEXTURES texture;    // made up of combinations of form, hardness, and wetness.
+    
+    HARDNESSES hardness;
+    FORMS form;
+    WETNESSES wetness;
     
     ofVec2f pos;
     ofVec2f offset;
@@ -108,7 +161,12 @@ public:
     int saltiness;
     int fattiness;
     int sourness;
+    int bitterness;
     int umami;
+    
+    int stinkiness;
+    
+    int complexity;
     
     animation_t anim;
     

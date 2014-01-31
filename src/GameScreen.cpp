@@ -278,7 +278,7 @@ void GameScreen::draw(){
         
     } else if (VIEW == GAME){
         //ofSetColor(255,255,255);
-        bg.draw(ofPoint(0,0));
+        //bg.draw(ofPoint(0,0));
         
         // --- DRAW STUFF FOR INGREDIENTS
         for (int i = 0;i<ingredients.size();i++){
