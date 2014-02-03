@@ -23,9 +23,26 @@ Ingredient::Ingredient(string _type, int x, int y){
 
 void Ingredient::setup(){
     
+    /// ESTABLISH FORMS MAP
+    
+    forms["slab"] = SLAB;
+    forms["sliced"] = SLICED;
+    forms["cubes"] = CUBES;
+    forms["grains"] = GRAINS;
+    forms["noodles"] = NOODLES;
+    forms["paste"] = PASTE;
+    forms["powder"] = POWDER;
+    forms["puree"] = PUREE;
+    forms["syrup"] = SYRUP;
+    forms["liquid"] = LIQUID;
+    forms["broth"] = BROTH;
+    forms["garnish"] = GARNISH;
+    forms["dough"] = DOUGH;
+    
     getIngredientInfo();
     
     BEINGHELD = false;
+    CAN_BE_BASE = true;
     
     // sprites have no offset from mouse because they're not being held
     offset.set(0,0);
@@ -51,83 +68,13 @@ void Ingredient::update(){
         getIngredientInfo();
     }
     
-    switch (form){
-            ///// --- CHECK TEXTURES FOR SLAB
-        case SLAB:
-            switch (hardness) {
-                case ROCK_SOLID:
-                    texture = ROCK_LIKE;
-                    break;
-                case HARD:
-                    texture = ROCK_LIKE;
-                    break;
-                case FIRM:
-                    //----------------------------- firm slab
-                    texture = DENSE;
-                    break;
-                case TOOTHY:
-                    //----------------------------- toothy slab
-                    texture = CRISPY;
-                    break;
-                case CHEWY:
-                    //----------------------------- CHEWY SLAB
-                    break;
-                case SOFT:
-                    //----------------------------- SOFT SLAB
-                    switch (wetness)
-                {
-                    case SOAKED_THROUGH:
-                        texture = SOGGY;
-                        break;
-                    case DRIPPING:
-                        texture = JUICY;
-                        break;
-                    case DAMP:
-                        texture = MOIST;
-                        break;
-                    case DRY:
-                        break;
-                }
-                    break;
-                case AIRY:
-                    /// AIRY SLAB
-                    switch (wetness)
-                {
-                    case SOAKED_THROUGH:
-                        texture = SOGGY;
-                        break;
-                    case DRIPPING:
-                        break;
-                    case DAMP:
-                        texture = MOIST;
-                        break;
-                    case DRY:
-                        texture = FLUFFY;
-                        break;
-                }
-                    break;
-            }
-            break;
-        case SLICED:
-            break;
-        case CUBES:
-            break;
-        case PASTE:
-            break;
-        case PUREE:
-            break;
-        case SYRUP:
-            break;
-        case POWDER:
-            break;
-        case LIQUID:
-            break;
-        case GRAINS:
-            break;
-        case NOODLES:
-            break;
-    }
     
+    if (form == POWDER || form == SYRUP || form == GARNISH || form == PASTE)
+    {
+        CAN_BE_BASE = false;
+    } else {
+        CAN_BE_BASE = true;
+    }
     
 }
 
@@ -135,7 +82,7 @@ void Ingredient::update(){
 
 void Ingredient::getIngredientInfo(){
     
-    ingList.open("ingredients.txt");
+    ingList.open("ingredients2.txt");
     ofBuffer ingredientList = ingList.readToBuffer();
     string currentLine = ingredientList.getFirstLine();
     std::string lineString = currentLine;
@@ -162,6 +109,27 @@ void Ingredient::getIngredientInfo(){
     
     int endPos3 = currentLine.find(", ", endPos2+1);
     whenGround = currentLine.substr(endPos2+2,endPos3-endPos2-2);
+    
+    int endPos4 = currentLine.find(", ", endPos3+1);
+    sweetness = ofToInt(currentLine.substr(endPos3+2,endPos4-endPos3-2));
+    
+    int endPos5 = currentLine.find(", ", endPos4+1);
+    saltiness = ofToInt(currentLine.substr(endPos4+2,endPos5-endPos4-2));
+    
+    int endPos6 = currentLine.find(", ", endPos5+1);
+    sourness = ofToInt(currentLine.substr(endPos5+2,endPos6-endPos5-2));
+    
+    int endPos7 = currentLine.find(", ", endPos6+1);
+    fattiness = ofToInt(currentLine.substr(endPos6+2,endPos7-endPos6-2));
+    
+    int endPos8 = currentLine.find(", ", endPos7+1);
+    bitterness = ofToInt(currentLine.substr(endPos7+2,endPos8-endPos7-2));
+    
+    int endPos9 = currentLine.find(", ", endPos8+1);
+    umami = ofToInt(currentLine.substr(endPos8+2,endPos9-endPos8-2));
+    
+    int endPos10 = currentLine.find(", ", endPos9+1);
+    form = forms[currentLine.substr(endPos9+2,endPos8-endPos9-2)];
     
     ingList.close();
     

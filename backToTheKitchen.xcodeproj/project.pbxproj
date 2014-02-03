@@ -124,7 +124,7 @@
 		F1EBA6CF187E1572003279BA /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		F1EBA6D0187E1572003279BA /* characters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = characters.xml; sourceTree = "<group>"; };
 		F1EBA6D1187E1572003279BA /* dishes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dishes.txt; sourceTree = "<group>"; };
-		F1EBA6D2187E1572003279BA /* ingredients.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ingredients.txt; sourceTree = "<group>"; };
+		F1EBA6D2187E1572003279BA /* ingredients2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ingredients2.txt; sourceTree = "<group>"; };
 		F1EBA6D3187E1572003279BA /* ingredientsObtained.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ingredientsObtained.txt; sourceTree = "<group>"; };
 		F1EBA6D4187E1572003279BA /* knownRecipes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knownRecipes.txt; sourceTree = "<group>"; };
 		F1EBA6D6187E1572003279BA /* rice_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rice_sheet.png; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 				F1EBA6CF187E1572003279BA /* bg.png */,
 				F1EBA6D0187E1572003279BA /* characters.xml */,
 				F1EBA6D1187E1572003279BA /* dishes.txt */,
-				F1EBA6D2187E1572003279BA /* ingredients.txt */,
+				F1EBA6D2187E1572003279BA /* ingredients2.txt */,
 				F1EBA6D3187E1572003279BA /* ingredientsObtained.txt */,
 				F1EBA6D4187E1572003279BA /* knownRecipes.txt */,
 				F1EBA6D5187E1572003279BA /* master */,

@@ -107,20 +107,18 @@ enum FORMS {
     PUREE,
     SYRUP,
     LIQUID,
+    BROTH,
+    GARNISH,
+    DOUGH,
 };
 
 enum HARDNESSES {
-    ROCK_SOLID,
-    HARD,
-    FIRM,
-    TOOTHY,
-    CHEWY,
+    TOUGH,
+    MEDIUM_TOUGH,
     SOFT,
-    AIRY,
 };
 
 enum WETNESSES {
-    SOAKED_THROUGH,
     DRIPPING,
     DAMP,
     DRY
@@ -142,10 +140,14 @@ public:
     
     bool BEINGHELD;
     
+    bool CAN_BE_BASE;
+    
     float boilTime;
     float grillTime;
     float grindTime;
     float sitTime;
+    
+    map <string,FORMS> forms;
     
     int boilLvl;
     int grillLvl;
@@ -167,6 +169,7 @@ public:
     int stinkiness;
     
     int complexity;
+    int balance;
     
     animation_t anim;
     

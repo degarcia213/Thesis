@@ -436,7 +436,7 @@ void GameScreen::reset(){
     ingredients.push_back(new Ingredient("uncooked rice", ofGetWidth() - 200, tablePos.y + 30));
     ingredients.push_back(new Ingredient("green tea leaves",ofGetWidth() - 200,tablePos.y + 100));
     ingredients.push_back(new Ingredient("sesame seeds",ofGetWidth() - 250,tablePos.y + 50));
-    ingredients.push_back(new Ingredient("red beans",ofGetWidth() - 250,tablePos.y + 120));
+    ingredients.push_back(new Ingredient("raw red beans",ofGetWidth() - 250,tablePos.y + 120));
     ingredients.push_back(new Ingredient("sugar",ofGetWidth() - 300,tablePos.y + 70));
     
     int randomizer = int(ofRandom(desires.size()));

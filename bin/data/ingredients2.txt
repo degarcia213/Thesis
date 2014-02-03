@@ -1,0 +1,54 @@
+ingredient, grilled ingredient, boiled ingredient, ground ingredient, sweetness, saltiness, sourness, fattiness, bitterness, umami, form
+uncooked rice, warm rice, barely boiled rice, rice flour, 0, 0, 0, 0, 2, 0, grains
+kettle of water, kettle of hot water, removeMe, kettle of water, 0, 0, 0, 0, 0, 0
+kettle of hot water, kettle of boiling water, removeMe, kettle of water, 0, 0, 0, 0, 0, 0
+kettle of boiling water, kettle of boiling water, removeMe, kettle of hot water, 0, 0, 0, 0, 0, 0
+warm rice, browned rice, barely boiled rice, ruined ingredient, 1, 0, 0, 0, 1, 0, grains
+browned rice, toasted rice, ruined ingredient, ruined ingredient, 2, 0, 0, 0, 1, 0, grains
+toasted rice, dry cracked rice, toasted rice tea, toasted rice powder, 3, 0, 0, 0, 0, 0, grains
+dry cracked rice, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 6, 0, grains
+barely boiled rice, ruined ingredient, lightly boiled rice, ruined ingredient, 0, 0, 0, 0, 1, 0, grains
+lightly boiled rice, crunchy bottom rice, boiled rice, ruined ingredient, 1, 0, 0, 0, 0, 0, grains
+boiled rice, crunchy bottom rice, soggy rice, mochi, 2, 0, 0, 0, 0, 0, grains
+soggy rice, ruined ingredient, ruined ingredient, ruined ingredient, 3, 0, 0, 0, 0, 0, grains
+ruined ingredient, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 0, 0, slab
+mochi, yakimochi, ruined ingredient, ruined ingredient, 3, 0, 0, 0, 0, 0, dough
+yakimochi, ruined ingredient, ruined ingredient, ruined ingredient, 3, 0, 0, 0, 0, 0, slab
+green tea leaves, ruined ingredient, ruined ingredient, matcha powder, 0, 0, 0, 0, 8, 0, garnish
+rice flour, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 0, 0, powder
+toasted rice powder, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 4, powder
+matcha powder, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 8, 0, powder
+matcha tea, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 4, 0, broth
+crunchy bottom rice, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 2, grains
+toasted rice tea, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 4, broth
+raw genmaicha, ruined ingredient, genmaicha, ruined ingredient, 0, 0, 0, 0, 7, 2, garnish
+sugar, caramel, simple syrup, powdered sugar, 10, 0, 0, 0, 0, 0, powder
+caramel, ruined ingredient, ruined ingredient, ruined ingredient, 9, 0, 0, 0, 0, 2, syrup
+simple syrup, ruined ingredient, ruined ingredient, ruined ingredient, 9, 0, 0, 0, 0, 0, syrup
+powdered sugar, ruined ingredient, ruined ingredient, ruined ingredient, 10, 0, 0, 0, 0, 0, powder
+sesame seeds, black sesame seeds, ruined ingredient, sesame powder, 0, 0, 0, 0, 0, 3, grains
+black sesame seeds, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 0, 5, grains
+sesame powder, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 0, 4, powder
+raw red beans, ruined ingredient, hot wet red beans, ruined ingredient, 0, 0, 0, 0, 0, 0, grains
+hot wet red beans, ruined ingredient, boiled red beans, ruined ingredient, 0, 0, 0, 0, 0, 0, grains
+boiled red beans, ruined ingredient, ruined ingredient, mashed red beans, 2, 0, 0, 0, 0, 0, grains
+mashed red beans, ruined ingredient, ruined ingredient, ruined ingredient, 2, 0, 0, 0, 0, 0, grains
+sweet red bean paste, ruined ingredient, ruined ingredient, ruined ingredient, 7, 0, 0, 0, 0, 0, paste
+daifuku, ruined ingredient, ruined ingredient, ruined ingredient, 6, 0, 0, 0, 0, 0, slab
+green tea mochi, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 2, 0, dough
+kurogoma mochi, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 4, dough
+goma mochi, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 2, dough
+green tea daifuku, ruined ingredient, ruined ingredient, ruined ingredient, 6, 0, 0, 0, 2, 0, slab
+kurogoma daifuku, ruined ingredient, ruined ingredient, ruined ingredient, 6, 0, 0, 0, 0, 4, slab
+glow worms, warm glow worms, lightly boiled glow worms, sticky glow worms, 0, 0, 4, 0, 7, 4, grains
+warm glow worms, crispy glow worms, lightly boiled glow worms, sticky glow worms, 0, 0, 3, 0, 6, 5, grains
+crispy glow worms, crunchy glow worms, ruined ingredient, sticky glow worms, 0, 0, 3, 0, 4, 6, grains
+crunchy glow worms, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 2, 0, 2, 4, grains
+lightly boiled glow worms, crispy glow worms, boiled glow worms, sticky glow worms, 0, 0, 3, 0, 5, 3, grains
+boiled glow worms, crispy boiled glow worms, pale tasteless glow worms, ruined ingredient, 0, 0, 1, 0, 3, 1, grains
+crispy boiled glow worms, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 1, 0, 3, 5, grains
+pale tasteless glow worms, ruined ingredient, pale tasteless glow worms, ruined ingredient, 0, 0, 0, 0, 2, 0, grains
+sticky glow worms, ruined ingredient, ruined ingredient, glow worm paste, 0, 0, 4, 0, 7, 4, grains
+glow worm paste, ruined ingredient, ruined ingredient, glow worm paste, 0, 0, 4, 0, 7, 4, paste
+removeMe, removeMe, removeMe, removeMe, 0, 0, 0, 0, 0, 0, removeMe
+<--- LAST --->
