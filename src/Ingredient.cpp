@@ -8,20 +8,24 @@
 
 #include "Ingredient.h"
 #include <fstream>
+#include "testApp.h"
 
 
-Ingredient::Ingredient(){
+Ingredient::Ingredient():GameObject(){
     //setup();
 }
 
-Ingredient::Ingredient(string _type, int x, int y){
+Ingredient::Ingredient(string _type, int x, int y):GameObject(x,y){
     type = _type;
-    pos.set(x,y);
     cout << type + "\n";
     setup();
 }
 
 void Ingredient::setup(){
+    
+    GameObject::setup();
+    
+    drawScale = 2;
     
     /// ESTABLISH FORMS MAP
     
@@ -39,19 +43,26 @@ void Ingredient::setup(){
     forms["garnish"] = GARNISH;
     forms["dough"] = DOUGH;
     
-    getIngredientInfo();
+    HOLDABLE = true;
+    HELD = false;
+    CAN_BE_BASE = false;
+    USED_IN_SUBDISH = false;
+    size = 20;
     
-    BEINGHELD = false;
-    CAN_BE_BASE = true;
+    getIngredientInfo();
     
     // sprites have no offset from mouse because they're not being held
     offset.set(0,0);
+    
+
     
     
     
 }
 
 void Ingredient::update(){
+    
+    GameObject::update();
     
     if (grillTime >= 200){
         type = whenGrilled;
@@ -72,9 +83,12 @@ void Ingredient::update(){
     if (form == POWDER || form == SYRUP || form == GARNISH || form == PASTE)
     {
         CAN_BE_BASE = false;
-    } else {
-        CAN_BE_BASE = true;
     }
+    
+    displayName = type;
+    
+    testApp * app = (testApp *)ofGetAppPtr();
+    anim = app->game.anims[type];
     
 }
 
@@ -86,19 +100,20 @@ void Ingredient::getIngredientInfo(){
     ofBuffer ingredientList = ingList.readToBuffer();
     string currentLine = ingredientList.getFirstLine();
     std::string lineString = currentLine;
+    string thisLineType = "";
     int pos = 1;
-    while(ofIsStringInString(currentLine, type) == false){
-        while (currentLine.find(type)!=0){
-            if (!ingredientList.isLastLine()){
+    thisLineType = currentLine.substr(0,currentLine.find(", "));
+    while(type != thisLineType){
+        if (!ingredientList.isLastLine()){
             currentLine = ingredientList.getNextLine();
-            } else {
-                cout << "this was left out of the ingredient list. Prepare to crash.";
-                break;
-            }
+            thisLineType = currentLine.substr(0,currentLine.find(", "));
+        } else {
+            cout << "this was left out of the ingredient list. Prepare to crash.";
+            break;
         }
     }
     
-    type = currentLine.substr(currentLine.find(type),type.length());
+    //type = currentLine.substr(currentLine.find(type),type.length());
     
     int startPos = currentLine.find(", ");
     int endPos = currentLine.find(", ", startPos+1);
@@ -138,16 +153,20 @@ void Ingredient::getIngredientInfo(){
     boilTime = 0;
     sitTime = 0;
     
+    if (form == SLAB || form == SLICED || form == CUBES || form == NOODLES || form == BROTH || form == GRAINS)
+    {
+        CAN_BE_BASE = true;
+    }
+    
     
     
 }
 
 void Ingredient::draw(int modx, int mody){
     
-    name = state + " " + type;
+    //ofNoFill();
+    //ofSetColor(0, 0, 0);
+   // ofCircle(pos.x + modx, pos.y + mody, size);
+   ofDrawBitmapString(type, pos.x + modx,pos.y + mody);
     
-    ofNoFill();
-    ofSetColor(0, 0, 0);
-    ofCircle(pos.x + modx, pos.y + mody, 20);
-    ofDrawBitmapString(type, pos.x + modx,pos.y + mody);
 }

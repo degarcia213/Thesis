@@ -29,12 +29,22 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		F11AE22418B96F0C006027D8 /* Pot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11AE22218B96F0C006027D8 /* Pot.cpp */; };
+		F11AE22718B97F36006027D8 /* Skillet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11AE22518B97F36006027D8 /* Skillet.cpp */; };
+		F11AE22A18B981E3006027D8 /* Grill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11AE22818B981E3006027D8 /* Grill.cpp */; };
+		F144ED8B18A29D5400842BBE /* Dish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F144ED8918A29D5400842BBE /* Dish.cpp */; };
+		F144ED9018A29DAF00842BBE /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F144ED8E18A29DAF00842BBE /* GameObject.cpp */; };
+		F153E80F18A435730048DFAC /* SimpleButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153E80D18A435730048DFAC /* SimpleButton.cpp */; };
+		F153E81218A4377A0048DFAC /* ServeBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153E81018A4377A0048DFAC /* ServeBtn.cpp */; };
+		F17AFE8818BFC16B00F270B4 /* Grinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8618BFC16B00F270B4 /* Grinder.cpp */; };
+		F17AFE8B18BFEBF000F270B4 /* Pestle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */; };
+		F1B12CF018C68EAF00EDE489 /* Sink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B12CEE18C68EAF00EDE489 /* Sink.cpp */; };
+		F1DA6C7418C62FAB00CFBE4A /* CuttingBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1DA6C7218C62FAB00CFBE4A /* CuttingBoard.cpp */; };
 		F1EBA6C1187E13DF003279BA /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6AE187E13DE003279BA /* Character.cpp */; };
 		F1EBA6C2187E13DF003279BA /* GameScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6B0187E13DE003279BA /* GameScreen.cpp */; };
 		F1EBA6C3187E13DF003279BA /* Ingredient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6B2187E13DE003279BA /* Ingredient.cpp */; };
 		F1EBA6C4187E13DF003279BA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6B4187E13DE003279BA /* main.cpp */; };
 		F1EBA6C5187E13DF003279BA /* MenuScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6B5187E13DE003279BA /* MenuScreen.cpp */; };
-		F1EBA6C6187E13DF003279BA /* ResponseBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6B7187E13DE003279BA /* ResponseBtn.cpp */; };
 		F1EBA6C7187E13DF003279BA /* Screen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6B9187E13DE003279BA /* Screen.cpp */; };
 		F1EBA6C8187E13DF003279BA /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6BB187E13DE003279BA /* testApp.cpp */; };
 		F1EBA6C9187E13DF003279BA /* TimeHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6BD187E13DE003279BA /* TimeHandler.cpp */; };
@@ -101,6 +111,33 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		F11AE22218B96F0C006027D8 /* Pot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pot.cpp; sourceTree = "<group>"; };
+		F11AE22318B96F0C006027D8 /* Pot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pot.h; sourceTree = "<group>"; };
+		F11AE22518B97F36006027D8 /* Skillet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skillet.cpp; sourceTree = "<group>"; };
+		F11AE22618B97F36006027D8 /* Skillet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skillet.h; sourceTree = "<group>"; };
+		F11AE22818B981E3006027D8 /* Grill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grill.cpp; sourceTree = "<group>"; };
+		F11AE22918B981E3006027D8 /* Grill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grill.h; sourceTree = "<group>"; };
+		F144ED8918A29D5400842BBE /* Dish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dish.cpp; sourceTree = "<group>"; };
+		F144ED8A18A29D5400842BBE /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
+		F144ED8E18A29DAF00842BBE /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
+		F144ED8F18A29DAF00842BBE /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObject.h; sourceTree = "<group>"; };
+		F153E80D18A435730048DFAC /* SimpleButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleButton.cpp; sourceTree = "<group>"; };
+		F153E80E18A435730048DFAC /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
+		F153E81018A4377A0048DFAC /* ServeBtn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServeBtn.cpp; sourceTree = "<group>"; };
+		F153E81118A4377A0048DFAC /* ServeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServeBtn.h; sourceTree = "<group>"; };
+		F17AFE8618BFC16B00F270B4 /* Grinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grinder.cpp; sourceTree = "<group>"; };
+		F17AFE8718BFC16B00F270B4 /* Grinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grinder.h; sourceTree = "<group>"; };
+		F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pestle.cpp; sourceTree = "<group>"; };
+		F17AFE8A18BFEBF000F270B4 /* Pestle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pestle.h; sourceTree = "<group>"; };
+		F1B12CE818C6863F00EDE489 /* bg_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_temp.png; sourceTree = "<group>"; };
+		F1B12CE918C6863F00EDE489 /* counterTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = counterTop.png; sourceTree = "<group>"; };
+		F1B12CEA18C6863F00EDE489 /* cuttingBGImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cuttingBGImg.png; sourceTree = "<group>"; };
+		F1B12CEB18C6863F00EDE489 /* dude_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dude_sheet.png; sourceTree = "<group>"; };
+		F1B12CEC18C6863F00EDE489 /* master_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = master_sheet.png; sourceTree = "<group>"; };
+		F1B12CEE18C68EAF00EDE489 /* Sink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sink.cpp; sourceTree = "<group>"; };
+		F1B12CEF18C68EAF00EDE489 /* Sink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sink.h; sourceTree = "<group>"; };
+		F1DA6C7218C62FAB00CFBE4A /* CuttingBoard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CuttingBoard.cpp; sourceTree = "<group>"; };
+		F1DA6C7318C62FAB00CFBE4A /* CuttingBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuttingBoard.h; sourceTree = "<group>"; };
 		F1EBA6AE187E13DE003279BA /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		F1EBA6AF187E13DE003279BA /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
 		F1EBA6B0187E13DE003279BA /* GameScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScreen.cpp; sourceTree = "<group>"; };
@@ -110,8 +147,6 @@
 		F1EBA6B4187E13DE003279BA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F1EBA6B5187E13DE003279BA /* MenuScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScreen.cpp; sourceTree = "<group>"; };
 		F1EBA6B6187E13DE003279BA /* MenuScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScreen.h; sourceTree = "<group>"; };
-		F1EBA6B7187E13DE003279BA /* ResponseBtn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResponseBtn.cpp; sourceTree = "<group>"; };
-		F1EBA6B8187E13DE003279BA /* ResponseBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseBtn.h; sourceTree = "<group>"; };
 		F1EBA6B9187E13DE003279BA /* Screen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Screen.cpp; sourceTree = "<group>"; };
 		F1EBA6BA187E13DE003279BA /* Screen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Screen.h; sourceTree = "<group>"; };
 		F1EBA6BB187E13DE003279BA /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
@@ -254,12 +289,15 @@
 			isa = PBXGroup;
 			children = (
 				F1EBA6B4187E13DE003279BA /* main.cpp */,
-				F1EBA6BB187E13DE003279BA /* testApp.cpp */,
 				F1EBA6BC187E13DE003279BA /* testApp.h */,
+				F1EBA6BB187E13DE003279BA /* testApp.cpp */,
+				F153E80C18A4355F0048DFAC /* UI_Stuff */,
 				F1EBA6CB187E13E9003279BA /* Screens */,
+				F144ED8E18A29DAF00842BBE /* GameObject.cpp */,
+				F144ED8F18A29DAF00842BBE /* GameObject.h */,
 				F1EBA6CC187E1406003279BA /* Characters */,
-				F1EBA6B2187E13DE003279BA /* Ingredient.cpp */,
-				F1EBA6B3187E13DE003279BA /* Ingredient.h */,
+				F11AE22118B96E55006027D8 /* Tools */,
+				F144ED8D18A29D6100842BBE /* Dishes */,
 				F1EBA6BD187E13DE003279BA /* TimeHandler.cpp */,
 				F1EBA6BE187E13DF003279BA /* TimeHandler.h */,
 				F1EBA6BF187E13DF003279BA /* Timer.cpp */,
@@ -275,6 +313,69 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		F11AE22118B96E55006027D8 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F11AE22218B96F0C006027D8 /* Pot.cpp */,
+				F11AE22318B96F0C006027D8 /* Pot.h */,
+				F11AE22518B97F36006027D8 /* Skillet.cpp */,
+				F11AE22618B97F36006027D8 /* Skillet.h */,
+				F11AE22818B981E3006027D8 /* Grill.cpp */,
+				F11AE22918B981E3006027D8 /* Grill.h */,
+				F17AFE8618BFC16B00F270B4 /* Grinder.cpp */,
+				F17AFE8718BFC16B00F270B4 /* Grinder.h */,
+				F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */,
+				F17AFE8A18BFEBF000F270B4 /* Pestle.h */,
+				F1DA6C7218C62FAB00CFBE4A /* CuttingBoard.cpp */,
+				F1DA6C7318C62FAB00CFBE4A /* CuttingBoard.h */,
+				F1B12CEE18C68EAF00EDE489 /* Sink.cpp */,
+				F1B12CEF18C68EAF00EDE489 /* Sink.h */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		F144ED8C18A29D5700842BBE /* Ingredients */ = {
+			isa = PBXGroup;
+			children = (
+				F1EBA6B2187E13DE003279BA /* Ingredient.cpp */,
+				F1EBA6B3187E13DE003279BA /* Ingredient.h */,
+			);
+			name = Ingredients;
+			sourceTree = "<group>";
+		};
+		F144ED8D18A29D6100842BBE /* Dishes */ = {
+			isa = PBXGroup;
+			children = (
+				F144ED8918A29D5400842BBE /* Dish.cpp */,
+				F144ED8A18A29D5400842BBE /* Dish.h */,
+				F144ED8C18A29D5700842BBE /* Ingredients */,
+			);
+			name = Dishes;
+			sourceTree = "<group>";
+		};
+		F153E80C18A4355F0048DFAC /* UI_Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F153E80D18A435730048DFAC /* SimpleButton.cpp */,
+				F153E80E18A435730048DFAC /* SimpleButton.h */,
+				F153E81018A4377A0048DFAC /* ServeBtn.cpp */,
+				F153E81118A4377A0048DFAC /* ServeBtn.h */,
+			);
+			name = UI_Stuff;
+			sourceTree = "<group>";
+		};
+		F1B12CE718C6863F00EDE489 /* sprites */ = {
+			isa = PBXGroup;
+			children = (
+				F1B12CE818C6863F00EDE489 /* bg_temp.png */,
+				F1B12CE918C6863F00EDE489 /* counterTop.png */,
+				F1B12CEA18C6863F00EDE489 /* cuttingBGImg.png */,
+				F1B12CEB18C6863F00EDE489 /* dude_sheet.png */,
+				F1B12CEC18C6863F00EDE489 /* master_sheet.png */,
+			);
+			path = sprites;
 			sourceTree = "<group>";
 		};
 		F1EBA6CB187E13E9003279BA /* Screens */ = {
@@ -293,8 +394,6 @@
 		F1EBA6CC187E1406003279BA /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				F1EBA6B7187E13DE003279BA /* ResponseBtn.cpp */,
-				F1EBA6B8187E13DE003279BA /* ResponseBtn.h */,
 				F1EBA6AE187E13DE003279BA /* Character.cpp */,
 				F1EBA6AF187E13DE003279BA /* Character.h */,
 			);
@@ -304,6 +403,7 @@
 		F1EBA6CD187E1572003279BA /* data */ = {
 			isa = PBXGroup;
 			children = (
+				F1B12CE718C6863F00EDE489 /* sprites */,
 				F1EBA6CE187E1572003279BA /* .gitkeep */,
 				F1EBA6CF187E1572003279BA /* bg.png */,
 				F1EBA6D0187E1572003279BA /* characters.xml */,
@@ -311,18 +411,10 @@
 				F1EBA6D2187E1572003279BA /* ingredients2.txt */,
 				F1EBA6D3187E1572003279BA /* ingredientsObtained.txt */,
 				F1EBA6D4187E1572003279BA /* knownRecipes.txt */,
-				F1EBA6D5187E1572003279BA /* master */,
 				F1EBA6D6187E1572003279BA /* rice_sheet.png */,
 			);
 			name = data;
 			path = bin/data;
-			sourceTree = "<group>";
-		};
-		F1EBA6D5187E1572003279BA /* master */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = master;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,11 +513,21 @@
 				F1EBA6C3187E13DF003279BA /* Ingredient.cpp in Sources */,
 				F1EBA6C4187E13DF003279BA /* main.cpp in Sources */,
 				F1EBA6C5187E13DF003279BA /* MenuScreen.cpp in Sources */,
-				F1EBA6C6187E13DF003279BA /* ResponseBtn.cpp in Sources */,
 				F1EBA6C7187E13DF003279BA /* Screen.cpp in Sources */,
 				F1EBA6C8187E13DF003279BA /* testApp.cpp in Sources */,
 				F1EBA6C9187E13DF003279BA /* TimeHandler.cpp in Sources */,
 				F1EBA6CA187E13DF003279BA /* Timer.cpp in Sources */,
+				F144ED8B18A29D5400842BBE /* Dish.cpp in Sources */,
+				F144ED9018A29DAF00842BBE /* GameObject.cpp in Sources */,
+				F153E80F18A435730048DFAC /* SimpleButton.cpp in Sources */,
+				F153E81218A4377A0048DFAC /* ServeBtn.cpp in Sources */,
+				F11AE22418B96F0C006027D8 /* Pot.cpp in Sources */,
+				F11AE22718B97F36006027D8 /* Skillet.cpp in Sources */,
+				F11AE22A18B981E3006027D8 /* Grill.cpp in Sources */,
+				F17AFE8818BFC16B00F270B4 /* Grinder.cpp in Sources */,
+				F17AFE8B18BFEBF000F270B4 /* Pestle.cpp in Sources */,
+				F1DA6C7418C62FAB00CFBE4A /* CuttingBoard.cpp in Sources */,
+				F1B12CF018C68EAF00EDE489 /* Sink.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

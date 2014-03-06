@@ -11,11 +11,14 @@
 
 #include <iostream>
 #include "ofMain.h"
+#include "Ingredient.h"
+#include "Dish.h"
+#include "GameObject.h"
 
-class Character{
+class Character : public GameObject{
 public:
 Character();
-Character(int _id);
+Character(int x, int y, int _difficulty);
     
     void setup();
     void update();
@@ -25,10 +28,39 @@ Character(int _id);
     string currentDialogue;
     
     string name;
-    string desire;
     
+    int difficulty;
+    
+    bool WANTS_FORM;
+    //
+    // ---- possible desired forms are...
+    bool WANTS_SOUP;                    //
+    bool WANTS_NOODLES;                 //
+    bool WANTS_GRAINS;                  //
+    // ---------------------------------//
+    
+    bool WANTS_BALANCE;
+    bool WANTS_INGREDIENT;
+    bool WANTS_FLAVOR;
+    
+    void decidePreferences();
+    
+    string desiredFlavor;
+    
+    FORMS DESIRED_FORM;
+    string desiredForm;
+    
+    string desiredIngredientType;
+    
+    void assessDish(Dish * _d);
+    bool PLEASED_WITH_DISH;
+    
+    
+    string dishImpressions;
     string rewardType;
     string ingredientReward;
+    
+    
     
     int cashAmt;
     

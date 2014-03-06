@@ -15,6 +15,8 @@ void testApp::setup(){
     time = TimeHandler(false);
     time.setup();
     
+    ofSetMinMagFilters(GL_NEAREST, GL_NEAREST);
+    
 }
 
 //--------------------------------------------------------------

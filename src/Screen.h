@@ -29,6 +29,8 @@ public:
     virtual void mouseReleased(int x,int y,int button);
     virtual void mouseMoved(int x,int y);
     
+    virtual void overlay(ofColor _color, int _alpha);
+    
     TimeHandler * time;
 
 };

@@ -12,10 +12,11 @@
 #include <iostream>
 #include <string>
 #include "ofMain.h"
+#include "GameObject.h"
 #include "ofxSpriteSheetRenderer.h"
 
 static animation_t uncookedRice =
-{	0,	/* .index			(int) - this is the index of the first animation frame. indicies start at 0 and go left to right, top to bottom by tileWidth on the spriteSheet		*/
+{	244,	/* .index			(int) - this is the index of the first animation frame. indicies start at 0 and go left to right, top to bottom by tileWidth on the spriteSheet		*/
 	0,	/* .frame			(int) - this is the current frame. It's an internal variable and should always be set to 0 at init													*/
 	1,	/* .totalframes		(int) - the animation length in frames																												*/
 	1,	/* .width			(int) - the width of each animation frame in tiles																									*/
@@ -29,39 +30,203 @@ static animation_t uncookedRice =
 
 static animation_t brownedRice =
 {
-    1,0,1,1,1,75,0,-1,-1,1
+    245,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t warmRice =
 {
-    0,0,1,1,1,75,0,-1,-1,1
+    244,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t toastedRice =
 {
-    2,0,1,1,1,75,0,-1,-1,1
+    246,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t dryCrackedRice =
 {
-    3,0,1,1,1,75,0,-1,-1,1
+    247,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t lightlyBoiledRice =
 {
-    4,0,1,1,1,75,0,-1,-1,1
+    248,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t boiledRice =
 {
-    5,0,1,1,1,75,0,-1,-1,1
+    249,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t soggyRice =
 {
-    6,0,1,1,1,75,0,-1,-1,1
+    250,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t crunchyRice =
 {
-    7,0,1,1,1,75,0,-1,-1,1
+    251,0,1,1,1,75,0,-1,-1,1
 };
 static animation_t ruined =
 {
-    8,0,1,1,1,75,0,-1,-1,1
+    252,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t riceFlourAnim =
+{
+    253,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t toastedRiceFlourAnim =
+{
+    254,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t mochiAnim =
+{
+    255,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t yakiMochiAnim =
+{
+    256,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t daifukuAnim =
+{
+    257,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t gomaDaifukuAnim =
+{
+    258,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t greenTeaMochiAnim =
+{
+    259,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t greenTeaDaifukuAnim =
+{
+    260,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t kurogomaMochiAnim =
+{
+    261,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t kurogomaDaifukuAnim =
+{
+    262,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t caramelizedSugar =
+{
+    240,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t simpleSyrup =
+{
+    241,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t sugarAnim =
+{
+    242,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t powderedSugarAnim =
+{
+    243,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t rawRedBeansAnim =
+{
+    280,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t cookedRedBeansAnim =
+{
+    281,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t mashedRedBeansAnim =
+{
+    282,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t sweetRedBeanPasteAnim =
+{
+    283,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t sesameSeedsAnim =
+{
+    284,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t blackSesameSeedsAnim =
+{
+    285,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t powderedSesameSeedsAnim =
+{
+    286,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t glowWormAnim =
+{
+    288,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t lightlyBoiledGlowWormAnim =
+{
+    290,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t boiledGlowWormAnim =
+{
+    292,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t tastelessGlowWormAnim =
+{
+    294,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t crispyBoiledGlowWormAnim =
+{
+    296,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t crispyGlowWormAnim =
+{
+    298,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t crunchyGlowWormAnim =
+{
+    300,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t stickyGlowWormAnim =
+{
+    302,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t glowWormPasteAnim =
+{
+    304,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t rawOxAnim =
+{
+    320,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t rottenOxAnim =
+{
+    322,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t rawSalmonAnim =
+{
+    328,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t grilledSalmonAnim =
+{
+    329,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t rawSobaAnim =
+{
+    360,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t greenTeaLeavesAnim =
+{
+    181,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t rawGenMaiAnim =
+{
+    182,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t matchaPwdrAnim =
+{
+    183,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t greenTeaAnim =
+{
+    201,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t GenMaiAnim =
+{
+    202,0,1,1,1,75,0,-1,-1,1
+};
+static animation_t matchaAnim =
+{
+    203,0,1,1,1,75,0,-1,-1,1
 };
 
 enum Ing_State{
@@ -110,6 +275,7 @@ enum FORMS {
     BROTH,
     GARNISH,
     DOUGH,
+    NUM_FORMS
 };
 
 enum HARDNESSES {
@@ -124,7 +290,7 @@ enum WETNESSES {
     DRY
 };
 
-class Ingredient{
+class Ingredient: public GameObject{
 public:
     string type;
     
@@ -134,11 +300,9 @@ public:
     HARDNESSES hardness;
     FORMS form;
     WETNESSES wetness;
-    
-    ofVec2f pos;
     ofVec2f offset;
     
-    bool BEINGHELD;
+    bool USED_IN_SUBDISH;
     
     bool CAN_BE_BASE;
     
@@ -171,8 +335,6 @@ public:
     int complexity;
     int balance;
     
-    animation_t anim;
-    
     ofFile ingList;
     
     string whenBoiled;
@@ -181,7 +343,7 @@ public:
     string whenSits;
     
     string state;
-    string name;
+    string displayName;
     
     Ingredient();
     

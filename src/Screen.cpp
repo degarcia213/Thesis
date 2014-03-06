@@ -29,6 +29,12 @@ void Screen::draw(){
     
 }
 
+void Screen::overlay(ofColor _color, int _alpha)
+{
+    ofSetColor(_color,_alpha);
+    ofRect(0,0,ofGetWidth(),ofGetHeight());
+}
+
 void Screen::keyPressed(int key){
     
 }
