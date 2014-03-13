@@ -15,6 +15,7 @@ ruined ingredient, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0
 mochi, yakimochi, ruined ingredient, ruined ingredient, 3, 0, 0, 0, 0, 0, dough
 yakimochi, ruined ingredient, ruined ingredient, ruined ingredient, 3, 0, 0, 0, 0, 0, slab
 green tea leaves, ruined ingredient, ruined ingredient, matcha powder, 0, 0, 0, 0, 8, 0, garnish
+green tea, ruined ingredient, ruined ingredient, matcha powder, 0, 0, 0, 0, 4, 0, broth
 rice flour, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 0, 0, powder
 toasted rice powder, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 4, powder
 matcha powder, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 8, 0, powder
@@ -22,8 +23,8 @@ matcha tea, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0,
 crunchy bottom rice, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 2, grains
 toasted rice tea, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 0, 4, broth
 raw genmaicha, ruined ingredient, genmaicha, ruined ingredient, 0, 0, 0, 0, 7, 2, garnish
-sugar, caramel, simple syrup, powdered sugar, 10, 0, 0, 0, 0, 0, powder
-caramel, ruined ingredient, ruined ingredient, ruined ingredient, 9, 0, 0, 0, 0, 2, syrup
+sugar, caramelized sugar, simple syrup, powdered sugar, 10, 0, 0, 0, 0, 0, powder
+caramelezied sugar, ruined ingredient, ruined ingredient, ruined ingredient, 9, 0, 0, 0, 0, 2, syrup
 simple syrup, ruined ingredient, ruined ingredient, ruined ingredient, 9, 0, 0, 0, 0, 0, syrup
 powdered sugar, ruined ingredient, ruined ingredient, ruined ingredient, 10, 0, 0, 0, 0, 0, powder
 sesame seeds, black sesame seeds, ruined ingredient, sesame powder, 0, 0, 0, 0, 0, 3, grains
@@ -32,7 +33,7 @@ sesame powder, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0,
 raw red beans, ruined ingredient, hot wet red beans, ruined ingredient, 0, 0, 0, 0, 0, 0, grains
 hot wet red beans, ruined ingredient, boiled red beans, ruined ingredient, 0, 0, 0, 0, 0, 0, grains
 boiled red beans, ruined ingredient, ruined ingredient, mashed red beans, 2, 0, 0, 0, 0, 0, grains
-mashed red beans, ruined ingredient, ruined ingredient, ruined ingredient, 2, 0, 0, 0, 0, 0, grains
+mashed red beans, ruined ingredient, ruined ingredient, ruined ingredient, 2, 0, 0, 0, 0, 0, paste
 sweet red bean paste, ruined ingredient, ruined ingredient, ruined ingredient, 7, 0, 0, 0, 0, 0, paste
 daifuku, ruined ingredient, ruined ingredient, ruined ingredient, 6, 0, 0, 0, 0, 0, slab
 green tea mochi, ruined ingredient, ruined ingredient, ruined ingredient, 1, 0, 0, 0, 2, 0, dough
@@ -50,5 +51,16 @@ crispy boiled glow worms, ruined ingredient, ruined ingredient, ruined ingredien
 pale tasteless glow worms, ruined ingredient, pale tasteless glow worms, ruined ingredient, 0, 0, 0, 0, 2, 0, grains
 sticky glow worms, ruined ingredient, ruined ingredient, glow worm paste, 0, 0, 4, 0, 7, 4, grains
 glow worm paste, ruined ingredient, ruined ingredient, glow worm paste, 0, 0, 4, 0, 7, 4, paste
+uncooked soba noodles, burnt noodles, cooked soba noodles, buckwheat powder, 0, 0, 0, 0, 3, 0, noodles
+burnt noodles, carbon noodles, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 5, 0, 0, noodles
+carbon noodles, carbon noodles, ruined ingredient, carbon powder, 0, 0, 0, 0, 7, 0, noodles
+carbon powder, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 10, 0, 0, powder
+cooked soba noodles, yakisoba, overcooked soba noodles, ruined ingredient, 2, 0, 0, 0, 0, 2, noodles
+overcooked soba noodles, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 0, 0, noodles
+yakisoba, ruined ingredient, ruined ingredient, ruined ingredient, 0, 3, 0, 0, 0, 2, noodles
+rotten ox meat, funky ox steak, soggy weird ox meat, ruined ingredient, 3, 0, 4, 5, 0, 1, slab
+funky ox steak, funky burnt ox steak, ruined ingredient, ruined ingredient, 4, 0, 3, 6, 0, 2, slab
+soggy weird ox meat, ruined ingredient, soggy weird ox meat, ruined ingredient, 2, 0, 5, 3, 0, 0, slab
+funky burnt ox steak, ruined ingredient, ruined ingredient, ruined ingredient, 2, 0, 3, 6, 4, 2, slab
 removeMe, removeMe, removeMe, removeMe, 0, 0, 0, 0, 0, 0, removeMe
 <--- LAST --->
