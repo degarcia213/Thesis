@@ -24,8 +24,11 @@ public:
     void setup();
     void update();
     void draw();
+    void addSpriteToRenderer();
     
     bool SHOWING_CONTENTS;
+    
+    bool REMOVE_ME;
     
     
     // --- CREATION STUFF

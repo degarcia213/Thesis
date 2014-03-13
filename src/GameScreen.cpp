@@ -29,8 +29,14 @@ void GameScreen::setup(){
     GRINDING = false;
     HOLDING_INGREDIENT = false;
     
+    drawScale = 2;
+    
     cash = 0;
     rating = 100;
+    
+    selectTimer = 0;
+    selectTime = 10;
+    CONSIDERING_SELECTION = false;
     
     ofSetMinMagFilters(GL_NEAREST, GL_NEAREST);
     
@@ -48,6 +54,9 @@ void GameScreen::setup(){
     mainRenderer = new ofxSpriteSheetRenderer(1,1000,0,32);
     mainRenderer -> loadTexture("sprites/master_sheet.png", 1280, GL_NEAREST);
     
+    characterRenderer = new ofxSpriteSheetRenderer(1,1000,0,256);
+    characterRenderer -> loadTexture("sprites/characters/shadow_sheet.png", 512, GL_NEAREST);
+    
     // INITIALIZE TOOLS
     
     
@@ -55,14 +64,14 @@ void GameScreen::setup(){
     tableHeight = 400;
     tablePos.set(0,200);
     
-    trash.set(100, tablePos.y + tableHeight + 100);
+    trash = TrashCan(0,246 * drawScale, 90 * drawScale, 24 * drawScale);
+    trash.setup();
+    
+    plate = Plate(160 * drawScale, 170 * drawScale);
+    plate.setup();
     
     bowl.set(100,tablePos.y + 150);
     finalPlate.set(100,tablePos.y + 350);
-    
-    grillRange = 50;
-    bowlRange = 50;
-    plateRange = 50;
     
     grinder = Grinder(320,480);
     grinder.setup();
@@ -72,10 +81,6 @@ void GameScreen::setup(){
     
     pestle = Pestle(480,200);
     
-    
-    skillet = Skillet(100,100);
-    skillet.setup();
-    
     grill = Grill(130,351);
     grill.setup();
     
@@ -83,13 +88,14 @@ void GameScreen::setup(){
     sink.setup();
     WATER_FLOWING = false;
     
-    pot = Pot(50,50);
+    pot = Pot(50,444);
     pot.setup();
     pot.sink = &sink;
     pot.grill = &grill;
     
-    serveButton = ServeBtn(300,200);
-    buttons.push_back(&serveButton);
+    skillet = Skillet(150,444);
+    skillet.setup();
+    skillet.grill = &grill;
     
     
     bookPos.set(750,ofGetHeight()-300);
@@ -123,33 +129,13 @@ void GameScreen::setup(){
     
     setupRecipeBook();
     
-    
-    // Initialize customer
-    
-    customerWidth = 50;
-    customerHeight = 75;
-    headSize = 25;
-    customerBody.set(150, tablePos.y - customerHeight);
-    customerHead.set(customerBody.x + .5 * customerWidth, customerBody.y - headSize);
-    
-    customerNames.push_back("randal");
-    customerNames.push_back("big randal");
-    customerNames.push_back("ultimate randal");
-    customerNames.push_back("hyper randal");
-    customerNames.push_back("furious randal");
-    customerNames.push_back("realer than randal");
-    customerNames.push_back("shmelissa");
-    customerNames.push_back("shmelissa DX");
-    customerNames.push_back("sgt. shmelissa");
-    customerNames.push_back("shmelissa command");
-    customerNames.push_back("shmelissa 2");
-    customerNames.push_back("tiny shmelissa");
+    customerNames.push_back("shadow");
     
     random_shuffle(customerNames.begin(), customerNames.end());
     
-    //importCharacters();
+    importCharacters();
     
-   // enterCustomer(ofRandom(characters.size()));
+    enterCustomer(0);
     
     
     //organize Animations----------------------
@@ -213,15 +199,13 @@ void GameScreen::setup(){
     dishBitterness = 0;
     dishUmami = 0;
     
-    platedDish = new Dish(finalPlate.x,finalPlate.y);
-    
     objID = 0;
     
 }
 
 void GameScreen::importCharacters()
 {
-    /*ofFile charFile;
+   /* ofFile charFile;
     charFile.open("characters.xml");
     ofBuffer buf = charFile.readToBuffer();
     
@@ -241,9 +225,9 @@ void GameScreen::importCharacters()
         characters.push_back(&newChar);
     }*/
     
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 1; i++)
     {
-        Character * newChar = new Character(20,20,ofRandom(4));
+        Character * newChar = new Character(ofGetWidth()/5,ofGetHeight()/2,ofRandom(4));
         newChar->ID = objID;
         newChar->name = customerNames[i];
         objID++;
@@ -257,6 +241,8 @@ void GameScreen::enterCustomer(int _id)
 {
  
     customerInStore = characters[_id];
+    
+    //characterRenderer -> loadTexture("sprites/characters/" + characters[_id]->name + "_sheet.png", 512, GL_NEAREST);
     
 }
 
@@ -317,6 +303,9 @@ void GameScreen::update(){
     mainRenderer->clear();
     mainRenderer->update(ofGetElapsedTimeMillis());
     
+    characterRenderer->clear();
+    characterRenderer->update(ofGetElapsedTimeMillis());
+    
     
     
     if (skillet.pos.distance(grill.burner1) < 10 || skillet.pos.distance(grill.burner2) < 10)
@@ -330,7 +319,17 @@ void GameScreen::update(){
     }
     
     
-    
+    if (CONSIDERING_SELECTION)
+    {
+        if (selectTimer < selectTime)
+        {
+            selectTimer++;
+        }
+        else
+        {
+            CONSIDERING_SELECTION = false;
+        }
+    }
     
     
     
@@ -354,9 +353,21 @@ void GameScreen::update(){
         }
     }
     
-    platedDish->update();
+    for (int d = 0; d < dishes.size();d++)
+    {
+        dishes[d]->update();
+    }
     customerTimer.update();
     nextCustomerTimer.update();
+    
+    for (int n = 0; n < uiDisplayText.size();n++)
+    {
+        uiDisplayText[n]->update();
+        if (uiDisplayText[n]->DEAD)
+        {
+            uiDisplayText.erase(uiDisplayText.begin() + n);
+        }
+    }
 
     switch (VIEW)
     {
@@ -413,7 +424,9 @@ void GameScreen::draw(){
     
     ofSetColor(255,255,255);
     bg.draw(ofPoint(0,0));
+    characterRenderer->draw();
     counterImg.draw(0,0);
+    
     
     switch (VIEW)
     {
@@ -430,29 +443,15 @@ void GameScreen::draw(){
                 ofPushMatrix();
                 ofTranslate(-shakeMod.x, -shakeMod.y);
             }
-            
             mainRenderer->draw();
-            
-            
-            
+            //grill.drawDebug();
             
             ofDrawBitmapString(dishInPlate, ofGetWidth() - dishInPlate.size()*8 - 20, 20);
-            ofDrawBitmapString("sweetness = " + ofToString(platedDish->sweetness), ofGetWidth()-130,30);
-            ofDrawBitmapString("saltiness = " + ofToString(platedDish->saltiness), ofGetWidth()-130,40);
-            ofDrawBitmapString("sourness = " + ofToString(platedDish->sourness), ofGetWidth()-130,50);
-            ofDrawBitmapString("fattiness = " + ofToString(platedDish->fattiness), ofGetWidth()-130,60);
-            ofDrawBitmapString("bitterness = " + ofToString(platedDish->bitterness), ofGetWidth()-130,70);
-            ofDrawBitmapString("umami = " + ofToString(platedDish->umami), ofGetWidth()-130,80);
             
-            platedDish->draw();
-            
-            for (int b = 0; b < buttons.size();b++)
+            for (int d = 0; d < dishes.size();d++)
             {
-                buttons[b]->draw();
+                dishes[d]->draw();
             }
-            
-            grill.draw();
-            
             
         }
             break;
@@ -467,6 +466,11 @@ void GameScreen::draw(){
             mainRenderer->draw();
         }
             break;
+    }
+    
+    for (int n = 0; n < uiDisplayText.size();n++)
+    {
+        uiDisplayText[n]->draw();
     }
     
     if (ofGetKeyPressed()){
@@ -484,12 +488,22 @@ void GameScreen::draw(){
 void GameScreen::updateIngredientsAndAddToScreen()
 {
     
+    customerInStore->update();
+    //customerInStore->addSpriteToRenderer();
+    characterRenderer->addCenterRotatedTile(&customerInStore->anim, customerInStore->pos.x, customerInStore->pos.y, 0, F_NONE, drawScale, customerInStore->angle, NULL, 255,255,255,255);
+    
     sink.update();
     sink.addSpriteToRenderer();
     if (sink.ACTIVE)
     {
         addWater();
     }
+    
+    trash.update();
+    trash.addSpriteToRenderer();
+    
+    plate.update();
+    plate.addSpriteToRenderer();
     
     grill.update();
     grill.addSpriteToRenderer();
@@ -522,7 +536,7 @@ void GameScreen::updateIngredientsAndAddToScreen()
         }
         
         if (ingredients[i]->HELD == false){
-        if (ingredients[i]->pos.distance(trash) < grillRange){
+            if (pointOverlaps(ingredients[i]->pos, trash.mouthPos,trash.mouthWidth,trash.mouthHeight)){
                 ingredients[i]->type = "removeMe";
             }
         }
@@ -534,10 +548,32 @@ void GameScreen::updateIngredientsAndAddToScreen()
         ingredients[i]->update();
     }
     
+    for (int d = 0; d < dishes.size();d++)
+    {
+        if (dishes[d]->REMOVE_ME)
+        {
+            dishes.erase(dishes.begin()+d);
+        }
+        
+        if (!dishes[d]->HELD)
+        {
+            if (pointOverlaps(dishes[d]->pos, trash.mouthPos,trash.mouthWidth,trash.mouthHeight))
+            {
+                dishes[d]->REMOVE_ME = true;
+            }
+        }
+        
+        dishes[d]->addSpriteToRenderer();
+    }
+    
     if(pot.IN_SINK)
     {
         pot.BEING_FILLED = true;
     }
+    
+
+
+
 }
 
 void GameScreen::addWater()
@@ -585,7 +621,8 @@ bool GameScreen::pointOverlaps(ofVec2f _p, ofVec2f _rectPos, int _rectWidth, int
 
 void GameScreen::serveCustomer()
 {
-    customerInStore->assessDish(platedDish);
+    //This is broken now that we're supporting more than one dish at a time. How should we handle this?
+    //customerInStore->assessDish(platedDish);
 }
 
 void GameScreen::overlay(ofColor _color)
@@ -602,23 +639,23 @@ void GameScreen::addIngredient(string _type, int x, int y)
     ingredients.push_back(ing);
 }
 
-void GameScreen::checkRecipes(){
+void GameScreen::checkRecipes(Dish * d){
     
-    platedDish->HAS_SUBDISH = false;
+    d->HAS_SUBDISH = false;
     
     vector<Ingredient *> dishComponents;
     
-    for (int b = 0; b < platedDish->baseCount;b++)
+    for (int b = 0; b < d->baseCount;b++)
     {
-        dishComponents.push_back(platedDish->base[b]);
+        dishComponents.push_back(d->base[b]);
     }
-    if (platedDish->HAS_BROTH)
+    if (d->HAS_BROTH)
     {
-        dishComponents.push_back(platedDish->broth);
+        dishComponents.push_back(d->broth);
     }
-    for (int g = 0; g < platedDish->garnishCount;g++)
+    for (int g = 0; g < d->garnishCount;g++)
     {
-        dishComponents.push_back(platedDish->garnish[g]);
+        dishComponents.push_back(d->garnish[g]);
     }
 
 
@@ -688,8 +725,8 @@ void GameScreen::checkRecipes(){
         
         if (containsAllElements)
         {
-            platedDish->subdish = recipeResult;
-            platedDish->HAS_SUBDISH = true;
+            d->subdish = recipeResult;
+            d->HAS_SUBDISH = true;
             break;
         }
         else
@@ -763,7 +800,7 @@ void GameScreen::checkRecipes(){
     };*/
     
     recipeList.close();
-    platedDish->createName();
+    d->createName();
      
     
 }
@@ -885,6 +922,19 @@ void GameScreen::mousePressed(int x, int y, int button){
     {
         case GAME:
         {
+            
+            if (pot.SELECTED)
+            {
+                pot.mousePressed(x, y);
+                pot.deselect();
+            }
+            
+            if (skillet.SELECTED)
+            {
+                skillet.mousePressed(x, y);
+                skillet.deselect();
+            }
+            
             for(int i = 0; i < ingredients.size();i++){
                 if (ingredients[i]->pos.distance(ofPoint(x,y))<20){
                     ingredients[i]->HELD = true;
@@ -912,16 +962,22 @@ void GameScreen::mousePressed(int x, int y, int button){
                     }
                 }
                 
-                if (platedDish->pos.distance(ofPoint(x,y))<platedDish->size)
+                for (int d = 0; d < dishes.size();d++)
                 {
-                    platedDish->HELD = true;
-                    HOLDING_INGREDIENT = true;
+                    if (dishes[d]->pos.distance(ofPoint(x,y))<dishes[d]->size)
+                    {
+                        dishes[d]->HELD = true;
+                        HOLDING_INGREDIENT = true;
+                    }
                 }
                 
                 if (skillet.pos.distance(ofPoint(x,y))<skillet.size)
                 {
                     skillet.HELD = true;
                     HOLDING_INGREDIENT = true;
+                    skillet.ON_GRILL = false;
+                    CONSIDERING_SELECTION = true;
+                    selectTimer = 0;
                 }
                 if (pot.pos.distance(ofPoint(x,y))<pot.size)
                 {
@@ -929,12 +985,23 @@ void GameScreen::mousePressed(int x, int y, int button){
                     HOLDING_INGREDIENT = true;
                     pot.IN_SINK = false;
                     pot.ON_GRILL = false;
+                    CONSIDERING_SELECTION = true;
+                    selectTimer = 0;
                 }
                 
                 if (ofPoint(x,y).distance(sink.nozzle1Pos) < 10 || ofPoint(x,y).distance(sink.nozzle2Pos) < 10)
                 {
                     sink.ACTIVE = !sink.ACTIVE;
                     sink.WATER_FLOWING = false;
+                }
+                
+                if (grill.knob1.distance(ofPoint(x,y))<10)
+                {
+                    grill.B1_ACTIVE = !grill.B1_ACTIVE;
+                }
+                else if (grill.knob2.distance(ofPoint(x,y))<10)
+                {
+                    grill.B2_ACTIVE = !grill.B2_ACTIVE;
                 }
                 
             }
@@ -1022,35 +1089,88 @@ void GameScreen::mouseReleased(int x, int y, int button){
             }
             else if (pot.HELD)
             {
-                if (pot.pos.distance(sink.pos)<sink.size)
+                if (CONSIDERING_SELECTION)
+                {
+                    if (!pot.SELECTED && pot.HAS_CONTENTS)
+                    {
+                        pot.select();
+                    }
+                }
+                
+                else if (pot.pos.distance(sink.pos)<sink.size)
                 {
                     pot.IN_SINK = true;
                 }
                 else if(pot.pos.distance(grill.burner1)<pot.size)
                 {
                     pot.ON_GRILL = true;
-                    pot.pos.x = grill.burner1.x;
-                    pot.pos.y = grill.burner2.y - 30;
+                    pot.pos.x = grill.burner1.x + (4 * drawScale);
+                    pot.pos.y = grill.burner1.y - (12 * drawScale);
+                    pot.BURNER_ACTIVE = grill.B1_ACTIVE;
                 }
                 else if (pot.pos.distance(grill.burner2)<pot.size)
                 {
                     pot.ON_GRILL = true;
-                    pot.pos.x = grill.burner2.x;
-                    pot.pos.y = grill.burner2.y - 30;
+                    pot.pos.x = grill.burner2.x + (4 * drawScale);
+                    pot.pos.y = grill.burner2.y - (12 * drawScale);
+                    pot.BURNER_ACTIVE = grill.B2_ACTIVE;
                 }
+            }
+            else if(skillet.HELD)
+            {
+             
+                if (CONSIDERING_SELECTION)
+                {
+                    if (!skillet.SELECTED && skillet.HAS_CONTENTS)
+                    {
+                        skillet.select();
+                    }
+                }
+                else if (skillet.pos.distance(grill.burner1)<skillet.size)
+                {
+                    skillet.ON_GRILL = true;
+                    skillet.pos.x = grill.burner1.x + (6 * drawScale);
+                    skillet.pos.y = grill.burner1.y - (5 * drawScale);
+                    skillet.BURNER_ACTIVE = grill.B1_ACTIVE;
+                }
+                else if  (skillet.pos.distance(grill.burner2)<skillet.size)
+                {
+                    skillet.ON_GRILL = true;
+                    skillet.pos.x = grill.burner2.x + (6 * drawScale);
+                    skillet.pos.y = grill.burner2.y - (5 * drawScale);
+                    skillet.BURNER_ACTIVE = grill.B2_ACTIVE;
+                }
+                
             }
             else{
                 for(int i = 0; i < ingredients.size();i++)
                 {
                     if (ingredients[i]->HELD == true)
                     {
+                        bool ADDED = false;
                         ingredients[i]->HELD = false;
-                        if (ingredients[i]->pos.distance(finalPlate)<plateRange)
+                        
+                        for (int d= 0; d < dishes.size();d++)
+                        {
+                            if (ingredients[i]->pos.distance(dishes[d]->pos) < dishes[d]->size)
+                            {
+                                dishes[d]->addIngredient(ingredients[i]);
+                                ingredients.erase(ingredients.begin() + i);
+                                checkRecipes(dishes[d]);
+                                ADDED = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!ADDED && ingredients[i]->pos.distance(plate.pos)<plate.size)
                         {
                             
-                            platedDish->addIngredient(ingredients[i]);
-                            ingredients.erase(ingredients.begin()+i);
-                            checkRecipes();
+                            Dish * dish = new Dish(plate.pos.x,plate.pos.y);
+                            dish->addIngredient(ingredients[i]);
+                            ingredients.erase(ingredients.begin() + i);
+                            checkRecipes(dish);
+                            dishes.push_back(dish);
+                            break;
                         }
                         if (pointOverlaps(ingredients[i]->pos, pot.mouthPos, pot.mouthWidth, pot.mouthHeight))
                         {
@@ -1064,6 +1184,17 @@ void GameScreen::mouseReleased(int x, int y, int button){
                             }
                             
                         }
+                        else if (pointOverlaps(ingredients[i]->pos,skillet.mouthPos, skillet.mouthWidth,skillet.mouthHeight))
+                        {
+                            if(skillet.add(ingredients[i]))
+                            {
+                                ingredients.erase(ingredients.begin()+i);
+                            }
+                            else
+                            {
+                                ingredients[i]->pos.set(skillet.pos.x,skillet.pos.y);
+                            }
+                        }
                     }
                 }
             }
@@ -1074,7 +1205,11 @@ void GameScreen::mouseReleased(int x, int y, int button){
         }
             break;
     }
-    platedDish->HELD = false;
+    
+    for (int d = 0; d < dishes.size();d++)
+    {
+        dishes[d]->HELD = false;
+    }
     skillet.HELD = false;
     pot.HELD = false;
     GRINDING = false;

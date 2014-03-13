@@ -1,6 +1,18 @@
 
 <xml>
     <characters>
+        <character name="shadow" id="0">
+            <desire>green tea</desire>
+            <timeLimit>40</timeLimit>
+        	<dialogue id="1">
+                <spoken>I AM SHADOW THING.</spoken>
+                <response id="1" dest ="2">What can I get you?</response>
+        	</dialogue>
+        	<dialogue id="2">
+                <spoken>I WANT TO ABSORB %DESIRE.</spoken>
+                <response id="1" dest="endConvo">Coming right up.</response>
+            </dialogue>
+            <reward type="ingredient">glow worms</reward>
         <character name="forgetful spirit" id="1">
             <desire>green tea</desire>
             <timeLimit>40</timeLimit>

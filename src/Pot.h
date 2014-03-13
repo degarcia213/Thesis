@@ -13,6 +13,7 @@
 #include "Ingredient.h"
 #include "Sink.h"
 #include "Grill.h"
+#include "FoodBubble.h"
 
 static animation_t potBack =
 {
@@ -24,18 +25,30 @@ static animation_t potFront =
     84,0,1,2,2,75,0,-1,-1,1
 };
 
-static animation_t waterPotAnim =
+static animation_t waterPotBackAnim =
 {
-    10,0,1,2,2,75,0,-1,-1,1
+    10,0,1,2,1,75,0,-1,-1,1
 };
-static animation_t boilPotAnim =
+static animation_t waterPotFrontAnim =
 {
-    12,0,4,2,2,75,0,-1,-1,1
+    12,0,1,2,1,75,0,-1,-1,1
+};
+static animation_t boilPotBackAnim =
+{
+    14,0,4,2,1,75,0,-1,-1,1
+};
+static animation_t boilPotFrontAnim =
+{
+    22,0,4,2,1,75,0,-1,-1,1
 };
 
-static animation_t fillPotAnim =
+static animation_t fillPotBackAnim =
 {
-    20,0,2,2,2,75,0,-1,-1,1
+    30,0,2,2,1,75,0,-1,-1,1
+};
+static animation_t fillPotFrontAnim =
+{
+    34,0,2,2,1,75,0,-1,-1,1
 };
 
 class Pot : public GameObject {
@@ -49,9 +62,15 @@ public:
     
     void fill();
     void empty();
+    void select();
+    void deselect();
+    
+    void mousePressed(int x, int y);
     
     Sink * sink;
     Grill * grill;
+    
+    bool BURNER_ACTIVE;
     
     ofVec2f mouthPos;
     int mouthWidth;
@@ -65,6 +84,8 @@ public:
     vector <ofVec2f> contentPos;
     vector <ofVec2f> contentDir;
     
+    vector <FoodBubble> bubbles;
+    
     int fillLvl;
     int maxFill;
     
@@ -73,6 +94,7 @@ public:
     bool FULL;
     bool IN_SINK;
     bool ON_GRILL;
+    bool SELECTED;
     
     int numContents;
     int maxContents;

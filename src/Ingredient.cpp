@@ -67,16 +67,22 @@ void Ingredient::update(){
     if (grillTime >= 200){
         type = whenGrilled;
         getIngredientInfo();
+        displayName = type;
+        spawnDisplay(displayName);
     }
     
     if (boilTime >= 200){
         type = whenBoiled;
         getIngredientInfo();
+        displayName = type;
+        spawnDisplay(displayName);
     }
     
     if (grindTime >= 200){
         type = whenGround;
         getIngredientInfo();
+        displayName = type;
+        spawnDisplay(displayName);
     }
     
     

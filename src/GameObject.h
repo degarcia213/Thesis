@@ -12,6 +12,7 @@
 #include <iostream>
 #include "ofMain.h"
 #include "ofxSpriteSheetRenderer.h"
+#include "NameDisplay.h"
 
 class GameObject{
 public:
@@ -22,8 +23,10 @@ public:
     virtual void setup();
     virtual void update();
     virtual void draw();
+    virtual void drawDebug();
     virtual void addSpriteToRenderer();
     virtual void mousePressed(int x, int y, int button);
+    virtual void spawnDisplay(string _displayText);
     
     ofVec2f pos;
     int ID;
@@ -39,6 +42,7 @@ public:
     ofImage * spriteSheet;
     
     string displayName;
+    vector <NameDisplay> nameDisplays;
     
     bool HOLDABLE;
     bool HELD;

@@ -15,6 +15,17 @@
 #include "Dish.h"
 #include "GameObject.h"
 
+static animation_t charIdleAnim =
+{
+    0,0,1,1,1,75,0,-1,-1,1
+};
+
+static animation_t charTalkAnim =
+{
+    0,0,2,1,1,75,0,-1,-1,1
+};
+
+
 class Character : public GameObject{
 public:
 Character();
@@ -23,6 +34,7 @@ Character(int x, int y, int _difficulty);
     void setup();
     void update();
     void draw();
+    void addSpriteToRenderer();
     
     vector <string> dialogue;
     string currentDialogue;
@@ -59,8 +71,6 @@ Character(int x, int y, int _difficulty);
     string dishImpressions;
     string rewardType;
     string ingredientReward;
-    
-    
     
     int cashAmt;
     

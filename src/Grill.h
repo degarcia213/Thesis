@@ -17,9 +17,9 @@ static animation_t grillOff =
     100,0,1,4,2,75,0,-1,-1,1
 };
 
-static animation_t grillOn =
+static animation_t grillFlameAnim =
 {
-    104,0,1,4,2,75,0,-1,-1,1
+    104,0,1,1,1,75,0,-1,-1,1
 };
 
 class Grill : public GameObject {
@@ -30,12 +30,16 @@ public:
     
     void setup();
     void update();
-    void draw();
+    void drawDebug();
     
     ofVec2f burner1;
     ofVec2f burner2;
     
-    bool ACTIVE;
+    ofVec2f knob1;
+    ofVec2f knob2;
+    
+    bool B1_ACTIVE;
+    bool B2_ACTIVE;
     
     void addSpriteToRenderer();
     

@@ -32,10 +32,14 @@
 		F11AE22418B96F0C006027D8 /* Pot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11AE22218B96F0C006027D8 /* Pot.cpp */; };
 		F11AE22718B97F36006027D8 /* Skillet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11AE22518B97F36006027D8 /* Skillet.cpp */; };
 		F11AE22A18B981E3006027D8 /* Grill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11AE22818B981E3006027D8 /* Grill.cpp */; };
+		F125937E18C9189600FF472C /* FoodBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F125937C18C9189500FF472C /* FoodBubble.cpp */; };
 		F144ED8B18A29D5400842BBE /* Dish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F144ED8918A29D5400842BBE /* Dish.cpp */; };
 		F144ED9018A29DAF00842BBE /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F144ED8E18A29DAF00842BBE /* GameObject.cpp */; };
 		F153E80F18A435730048DFAC /* SimpleButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153E80D18A435730048DFAC /* SimpleButton.cpp */; };
 		F153E81218A4377A0048DFAC /* ServeBtn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F153E81018A4377A0048DFAC /* ServeBtn.cpp */; };
+		F154637F18D0AEC000AFE9C5 /* TrashCan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F154637D18D0AEC000AFE9C5 /* TrashCan.cpp */; };
+		F154638218D0B44500AFE9C5 /* Plate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F154638018D0B44500AFE9C5 /* Plate.cpp */; };
+		F16411AC18D0E54400AD5AD7 /* NameDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16411AA18D0E54400AD5AD7 /* NameDisplay.cpp */; };
 		F17AFE8818BFC16B00F270B4 /* Grinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8618BFC16B00F270B4 /* Grinder.cpp */; };
 		F17AFE8B18BFEBF000F270B4 /* Pestle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */; };
 		F1B12CF018C68EAF00EDE489 /* Sink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B12CEE18C68EAF00EDE489 /* Sink.cpp */; };
@@ -117,6 +121,8 @@
 		F11AE22618B97F36006027D8 /* Skillet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skillet.h; sourceTree = "<group>"; };
 		F11AE22818B981E3006027D8 /* Grill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grill.cpp; sourceTree = "<group>"; };
 		F11AE22918B981E3006027D8 /* Grill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grill.h; sourceTree = "<group>"; };
+		F125937C18C9189500FF472C /* FoodBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FoodBubble.cpp; sourceTree = "<group>"; };
+		F125937D18C9189500FF472C /* FoodBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodBubble.h; sourceTree = "<group>"; };
 		F144ED8918A29D5400842BBE /* Dish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dish.cpp; sourceTree = "<group>"; };
 		F144ED8A18A29D5400842BBE /* Dish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
 		F144ED8E18A29DAF00842BBE /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
@@ -125,6 +131,12 @@
 		F153E80E18A435730048DFAC /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
 		F153E81018A4377A0048DFAC /* ServeBtn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServeBtn.cpp; sourceTree = "<group>"; };
 		F153E81118A4377A0048DFAC /* ServeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServeBtn.h; sourceTree = "<group>"; };
+		F154637D18D0AEC000AFE9C5 /* TrashCan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrashCan.cpp; sourceTree = "<group>"; };
+		F154637E18D0AEC000AFE9C5 /* TrashCan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrashCan.h; sourceTree = "<group>"; };
+		F154638018D0B44500AFE9C5 /* Plate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plate.cpp; sourceTree = "<group>"; };
+		F154638118D0B44500AFE9C5 /* Plate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plate.h; sourceTree = "<group>"; };
+		F16411AA18D0E54400AD5AD7 /* NameDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NameDisplay.cpp; path = ../NameDisplay.cpp; sourceTree = "<group>"; };
+		F16411AB18D0E54400AD5AD7 /* NameDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NameDisplay.h; path = ../NameDisplay.h; sourceTree = "<group>"; };
 		F17AFE8618BFC16B00F270B4 /* Grinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grinder.cpp; sourceTree = "<group>"; };
 		F17AFE8718BFC16B00F270B4 /* Grinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grinder.h; sourceTree = "<group>"; };
 		F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pestle.cpp; sourceTree = "<group>"; };
@@ -332,6 +344,10 @@
 				F1DA6C7318C62FAB00CFBE4A /* CuttingBoard.h */,
 				F1B12CEE18C68EAF00EDE489 /* Sink.cpp */,
 				F1B12CEF18C68EAF00EDE489 /* Sink.h */,
+				F154637D18D0AEC000AFE9C5 /* TrashCan.cpp */,
+				F154637E18D0AEC000AFE9C5 /* TrashCan.h */,
+				F154638018D0B44500AFE9C5 /* Plate.cpp */,
+				F154638118D0B44500AFE9C5 /* Plate.h */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -358,8 +374,12 @@
 		F153E80C18A4355F0048DFAC /* UI_Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				F16411AA18D0E54400AD5AD7 /* NameDisplay.cpp */,
+				F16411AB18D0E54400AD5AD7 /* NameDisplay.h */,
 				F153E80D18A435730048DFAC /* SimpleButton.cpp */,
 				F153E80E18A435730048DFAC /* SimpleButton.h */,
+				F125937C18C9189500FF472C /* FoodBubble.cpp */,
+				F125937D18C9189500FF472C /* FoodBubble.h */,
 				F153E81018A4377A0048DFAC /* ServeBtn.cpp */,
 				F153E81118A4377A0048DFAC /* ServeBtn.h */,
 			);
@@ -528,6 +548,10 @@
 				F17AFE8B18BFEBF000F270B4 /* Pestle.cpp in Sources */,
 				F1DA6C7418C62FAB00CFBE4A /* CuttingBoard.cpp in Sources */,
 				F1B12CF018C68EAF00EDE489 /* Sink.cpp in Sources */,
+				F125937E18C9189600FF472C /* FoodBubble.cpp in Sources */,
+				F154637F18D0AEC000AFE9C5 /* TrashCan.cpp in Sources */,
+				F154638218D0B44500AFE9C5 /* Plate.cpp in Sources */,
+				F16411AC18D0E54400AD5AD7 /* NameDisplay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

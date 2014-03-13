@@ -7,3 +7,13 @@
 //
 
 #include "Plate.h"
+
+Plate::Plate():GameObject()
+{
+    
+}
+
+Plate::Plate(int x, int y):GameObject(x,y)
+{
+    anim = plateAnim;
+}

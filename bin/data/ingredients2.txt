@@ -52,7 +52,7 @@ pale tasteless glow worms, ruined ingredient, pale tasteless glow worms, ruined 
 sticky glow worms, ruined ingredient, ruined ingredient, glow worm paste, 0, 0, 4, 0, 7, 4, grains
 glow worm paste, ruined ingredient, ruined ingredient, glow worm paste, 0, 0, 4, 0, 7, 4, paste
 uncooked soba noodles, burnt noodles, cooked soba noodles, buckwheat powder, 0, 0, 0, 0, 3, 0, noodles
-burnt noodles, carbon noodles, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 5, 0, 0, noodles
+burnt noodles, carbon noodles, ruined ingredient, ruined ingredient, 0, 0, 0, 0, 5, 0, noodles
 carbon noodles, carbon noodles, ruined ingredient, carbon powder, 0, 0, 0, 0, 7, 0, noodles
 carbon powder, ruined ingredient, ruined ingredient, ruined ingredient, 0, 0, 0, 10, 0, 0, powder
 cooked soba noodles, yakisoba, overcooked soba noodles, ruined ingredient, 2, 0, 0, 0, 0, 2, noodles

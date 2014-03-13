@@ -29,12 +29,13 @@ Character::Character(int x, int y, int _difficulty):GameObject(x,y){
     WANTS_GRAINS = false;
     
     difficulty = _difficulty;
+    
+    anim = charIdleAnim;
 }
 
 void Character::setup(){
     
     GameObject::setup();
-    
     decidePreferences();
     
     currentDialogue = "Hi! I'm " + name + ".\n";
@@ -69,6 +70,8 @@ void Character::setup(){
     {
         currentDialogue += "I'm into the idea of something complex but nicely balanced.\n";
     }
+    
+        anim = charIdleAnim;
 }
 
 void Character::update(){
@@ -378,4 +381,13 @@ void Character::draw(){
     
     
     
+}
+
+void Character::addSpriteToRenderer()
+{
+    testApp * app = (testApp *)ofGetAppPtr();
+    
+    app->game.characterRenderer->addCenterRotatedTile(&anim, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
+    
+    //here
 }

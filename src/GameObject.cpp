@@ -17,6 +17,7 @@ GameObject::GameObject()
 GameObject::GameObject(int x, int y)
 {
     pos.set(x,y);
+    angle = 0;
 }
 
 GameObject::GameObject(int x, int y, ofImage * _spriteSheet)
@@ -25,6 +26,7 @@ GameObject::GameObject(int x, int y, ofImage * _spriteSheet)
     spriteSheet = _spriteSheet;
     drawScale = 2;
     setup();
+    angle = 0;
 }
 
 void GameObject::setup()
@@ -32,11 +34,9 @@ void GameObject::setup()
     modx = 0;
     mody = 0;
     size = 20;
-    angle = 0;
     HOLDABLE = false;
     HELD = false;
     HIGHLIGHTED = false;
-    
 }
 
 void GameObject::update()
@@ -59,9 +59,14 @@ void GameObject::update()
     {
         angle -= 360;
     }
+    
 }
 
 void GameObject::draw()
+{
+}
+
+void GameObject::drawDebug()
 {
     
     ofNoFill();
@@ -69,6 +74,14 @@ void GameObject::draw()
     ofCircle(pos.x + modx, pos.y + mody, size);
     ofDrawBitmapString(displayName, pos.x + modx,pos.y + mody);
     
+}
+
+void GameObject::spawnDisplay(string _displayText)
+{
+    NameDisplay * nameDisplay = new NameDisplay(pos.x, pos.y, _displayText);
+    
+    testApp * app = (testApp *)ofGetAppPtr();
+    app->game.uiDisplayText.push_back(nameDisplay);
 }
 
 void GameObject::addSpriteToRenderer()

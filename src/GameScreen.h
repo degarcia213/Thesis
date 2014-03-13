@@ -14,6 +14,8 @@
 #include "Pestle.h"
 #include "CuttingBoard.h"
 #include "Sink.h"
+#include "TrashCan.h"
+#include "Plate.h"
 
 enum viewType{
     GAME,
@@ -54,6 +56,10 @@ public:
     void gotMessage(ofMessage msg);
     
     void updateIngredientsAndAddToScreen();
+    
+    int selectTimer;
+    int selectTime;
+    bool CONSIDERING_SELECTION;
 
     
     void addIngredient(string _type, int x, int y);
@@ -79,6 +85,8 @@ public:
     
     Character * customerInStore;
     
+    ofxSpriteSheetRenderer * characterRenderer;
+    
     Timer customerTimer;
     Timer nextCustomerTimer;
     
@@ -89,7 +97,7 @@ public:
     void setupPantry();
     void addToPantry(string _ingredient);
     
-    void checkRecipes();
+    void checkRecipes(Dish * d);
     ofFile recipeList;
     ofFile knownList;
     
@@ -107,8 +115,11 @@ public:
     ofxSpriteSheetRenderer * mainRenderer;
     map <string,animation_t> anims;
     
+    float drawScale;
+    
     // UI ELEMENTS
     vector <SimpleButton *> buttons;
+    vector <NameDisplay *> uiDisplayText;
     ServeBtn serveButton;
     void overlay(ofColor _color);
     
@@ -157,7 +168,8 @@ public:
     
     
     //TRASH
-    ofPoint trash;
+    
+    TrashCan trash;
     
     // TOOLS HERE
     Pot pot;
@@ -189,10 +201,14 @@ public:
     
     
     //FINAL PLATE
+    
+    Plate plate;
+    
     ofPoint finalPlate;
     int plateRange;
     vector <Ingredient *> plateContents;
-    Dish * platedDish;
+    
+    vector <Dish *> dishes;
     
     string dishInPlate;
     int dishSweetness;

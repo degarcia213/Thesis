@@ -42,6 +42,7 @@ void Dish::setup()
     
     EXISTS = false;
     SHOWING_CONTENTS = false;
+    REMOVE_ME = false;
 }
 
 void Dish::update()
@@ -52,31 +53,18 @@ void Dish::update()
     {
         EXISTS = true;
     }
-    if (baseCount > 0)
-    {
-    base[0]->pos.set(pos-(ofVec2f(0,1)*30));
-    }
-    else if (baseCount > 1)
-    {
-    base[1]->pos.set(pos-(ofVec2f(3.33,6.66).getNormalized()*30));
-    }
     
+    for (int b = 0; b < baseCount;b++)
+    {
+        base[b]->pos = pos;
+    }
     if (HAS_BROTH)
     {
-        broth->pos.set(pos-(ofVec2f(6.66,3.33).getNormalized()*30));
+        broth->pos = pos;
     }
-    
-    if (garnishCount > 0)
+    for (int g = 0; g < garnishCount;g++)
     {
-        garnish[0]->pos.set(pos+(ofVec2f(3.33,6.66).getNormalized()*30));
-    }
-    else if (garnishCount > 1)
-    {
-        garnish[1]->pos.set(pos+(ofVec2f(6.66,3.33).getNormalized()*30));
-    }
-    else if (garnishCount > 2)
-    {
-        garnish[2]->pos.set(pos+(ofVec2f(0,1).getNormalized()*30));
+        garnish[g]->pos = pos;
     }
     
     
@@ -431,9 +419,23 @@ void Dish::draw()
             }
         }
     }
-    
-    
-    
-    
+}
 
+void Dish::addSpriteToRenderer()
+{
+    testApp* app = (testApp *)ofGetAppPtr();
+    
+    for (int b = 0; b < baseCount;b++)
+    {
+        base[b]->addSpriteToRenderer();
+    }
+    if (HAS_BROTH)
+    {
+        broth->addSpriteToRenderer();
+    }
+    for (int g = 0; g < garnishCount;g++)
+    {
+        garnish[g]->addSpriteToRenderer();
+    }
+    
 }

@@ -34,6 +34,8 @@ void Pot::setup()
     maxFill = 10;
     numContents = 0;
     maxContents = 3;
+    SELECTED = false;
+    BURNER_ACTIVE = false;
     
     mouthPos.set(pos.x - 40, pos.y - 40);
     mouthWidth = 80;
@@ -45,8 +47,6 @@ void Pot::setup()
         contentPos.push_back(ofVec2f(i+1*(mouthWidth/maxContents),mouthHeight/2));
         contentDir.push_back(ofVec2f(ofRandom(-1,1),ofRandom(-1,1)).normalize());
     }
-    
-   
 }
 
 void Pot::update()
@@ -109,7 +109,7 @@ void Pot::update()
         fill();
     }
     
-    if (ON_GRILL && FULL && grill->ACTIVE)
+    if (ON_GRILL && FULL && BURNER_ACTIVE)
     {
         ACTIVE = true;
     }
@@ -122,7 +122,37 @@ void Pot::update()
     mouthWidth = 80;
     mouthHeight = 20;
     
+    if (SELECTED)
+    {
+        for (int b = 0; b < bubbles.size();b++)
+        {
+            bubbles[b].update();
+            bubbles[b].pos.set(mouthPos.x + ((b+1) * (mouthWidth/(numContents+1))),mouthPos.y - 50);
+        }
+    }
     
+    if (!ON_GRILL)
+    {
+        BURNER_ACTIVE = false;
+    }
+}
+
+void Pot::mousePressed(int x, int y)
+{
+    
+    for (int b = 0; b < bubbles.size();b++)
+    {
+        if (ofVec2f(x,y).distance(bubbles[b].bubblePos)<40)
+        {
+            contents.erase(contents.begin() + b);
+            testApp * app = (testApp *)ofGetAppPtr();
+            bubbles[b].content->HELD = true;
+            bubbles[b].content->angle = 0;
+            app->game.ingredients.push_back(bubbles[b].content);
+            numContents--;
+            break;
+        }
+    }
 }
 
 bool Pot::add(Ingredient * _i)
@@ -156,10 +186,35 @@ void Pot::fill()
     } 
 }
 
+void Pot::select()
+{
+    SELECTED = true;
+    bubbles.clear();
+    for (int c = 0; c < contents.size();c++)
+    {
+        int newAng = int(((c+1) * (180/(numContents+1)))-90);
+        FoodBubble bubble = FoodBubble(mouthPos.x + ((c+1) * (mouthWidth/(numContents+1))),mouthPos.y - 10,newAng,blueBubble, contents[c]);
+        bubble.setup();
+        bubbles.push_back(bubble);
+    }
+}
+
+void Pot::deselect()
+{
+    SELECTED = false;
+    bubbles.clear();
+    
+}
+
 void Pot::addSpriteToRenderer()
 {
     
     testApp * app = (testApp *)ofGetAppPtr();
+    
+    if (SELECTED)
+    {
+        app->game.overlay(ofColor(4,11,68,127));
+    }
     
     app->game.mainRenderer->addCenteredTile(&potBack, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
     
@@ -168,15 +223,15 @@ void Pot::addSpriteToRenderer()
         if (BEING_FILLED)
         {
             app->game.addWater();
-            app->game.mainRenderer->addCenteredTile(&fillPotAnim, pos.x + (1*drawScale), (pos.y + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
+            app->game.mainRenderer->addCenteredTile(&fillPotBackAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
         }
         else if (ACTIVE)
         {
-            app->game.mainRenderer->addCenteredTile(&boilPotAnim, pos.x + (1*drawScale), (pos.y + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
+            app->game.mainRenderer->addCenteredTile(&boilPotBackAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
         }
         else
         {
-            app->game.mainRenderer->addCenteredTile(&waterPotAnim, pos.x + (1*drawScale), (pos.y + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
+            app->game.mainRenderer->addCenteredTile(&waterPotBackAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
         }
     }
     
@@ -184,11 +239,43 @@ void Pot::addSpriteToRenderer()
     {
         for (int c = 0; c < contents.size(); c++)
         {
+            contents[c]->drawScale = drawScale;
             contents[c]->addSpriteToRenderer();
         }
     }
     
+    if (fillLvl > 0)
+    {
+        if (BEING_FILLED)
+        {
+            app->game.addWater();
+            app->game.mainRenderer->addCenteredTile(&fillPotFrontAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
+        }
+        else if (ACTIVE)
+        {
+            app->game.mainRenderer->addCenteredTile(&boilPotFrontAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
+        }
+        else
+        {
+            app->game.mainRenderer->addCenteredTile(&waterPotFrontAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
+        }
+    }
+    
     app->game.mainRenderer->addCenteredTile(&potFront, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
+    
+    if (ON_GRILL && BURNER_ACTIVE)
+    {
+        app->game.mainRenderer->addCenteredTile(&skilletFlameAnim, pos.x + 10, pos.y + 12,0,F_NONE,drawScale,255,255,255,255);
+    }
+    
+    if (SELECTED)
+    {
+        for (int b = 0; b < bubbles.size();b++)
+        {
+            bubbles[b].addSpriteToRenderer();
+        }
+    }
+    
     
     
 }
