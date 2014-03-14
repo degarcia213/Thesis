@@ -41,6 +41,8 @@ public:
     animation_t anim;
     ofImage * spriteSheet;
     
+    ofxSpriteSheetRenderer * renderer;
+    
     string displayName;
     vector <NameDisplay> nameDisplays;
     

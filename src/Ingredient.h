@@ -15,6 +15,11 @@
 #include "GameObject.h"
 #include "ofxSpriteSheetRenderer.h"
 
+static animation_t ingredientIdle =
+{
+    0,0,8,1,1,75,0,-1,-1,1
+};
+
 static animation_t uncookedRice =
 {	244,	/* .index			(int) - this is the index of the first animation frame. indicies start at 0 and go left to right, top to bottom by tileWidth on the spriteSheet		*/
 	0,	/* .frame			(int) - this is the current frame. It's an internal variable and should always be set to 0 at init													*/

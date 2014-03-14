@@ -27,6 +27,14 @@ GameObject::GameObject(int x, int y, ofImage * _spriteSheet)
     drawScale = 2;
     setup();
     angle = 0;
+    
+    ofTexture * tex = &_spriteSheet->getTextureReference();
+    
+    renderer = new ofxSpriteSheetRenderer(1,1000,0,26);
+    renderer->loadTexture(tex);
+    renderer->allocate(tex->getWidth(), GL_NEAREST);
+    
+    anim = ingredientIdle;
 }
 
 void GameObject::setup()
@@ -41,6 +49,10 @@ void GameObject::setup()
 
 void GameObject::update()
 {
+    
+    renderer->clear();
+    renderer->update(ofGetElapsedTimeMillis());
+    
     if (HELD)
     {
         pos = ofPoint(ofGetMouseX(),ofGetMouseY());
@@ -60,10 +72,15 @@ void GameObject::update()
         angle -= 360;
     }
     
+    renderer->addCenterRotatedTile(&anim, pos.x + modx, pos.y + mody, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
+    
 }
 
 void GameObject::draw()
 {
+    
+    renderer->draw();
+    
 }
 
 void GameObject::drawDebug()

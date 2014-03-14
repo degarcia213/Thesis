@@ -162,7 +162,9 @@ public:
     
     vector <string> customerNames;
     
-    
+    /// ---- INGREDIENT SHEETS - MOVE THIS
+    ofImage riceSheet;
+    GameObject testRice;
     
     //--TIMER
     

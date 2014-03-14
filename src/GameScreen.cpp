@@ -40,6 +40,9 @@ void GameScreen::setup(){
     
     ofSetMinMagFilters(GL_NEAREST, GL_NEAREST);
     
+    riceSheet.loadImage("sprites/ingredients/rice_sheet.png");
+    testRice = GameObject(ofGetWidth()/2, ofGetHeight()/2, &riceSheet);
+    
     bg.loadImage("sprites/bg_temp.png");
     bg.resize(960, 540);
     counterImg.loadImage("sprites/counterTop.png");
@@ -375,7 +378,8 @@ void GameScreen::update(){
             /// NOW MAIN COUNTER VIEW STUFF
 
         {
-                updateIngredientsAndAddToScreen();
+            testRice.update();
+                //updateIngredientsAndAddToScreen();
         }
         break;
         case GRINDERVIEW:
@@ -428,6 +432,8 @@ void GameScreen::draw(){
     counterImg.draw(0,0);
     
     
+    testRice.draw();
+    
     switch (VIEW)
     {
         case RECIPES:
@@ -452,12 +458,14 @@ void GameScreen::draw(){
             {
                 dishes[d]->draw();
             }
+            testRice.draw();
             
         }
             break;
         case GRINDERVIEW:
         {
             mainRenderer->draw();
+            testRice.draw();
         }
             break;
         case CUTTINGVIEW:
@@ -948,7 +956,7 @@ void GameScreen::mousePressed(int x, int y, int button){
                 }
                 for (int i = 0;i<9;i++){
                     if (ofPoint(x,y).distance(ofPoint(pantryPos[i].x, pantryPos[i].y))<pantry[i]->size){
-                        addIngredient(pantryContentsList[i],x,y);
+                        //addIngredient(pantryContentsList[i],x,y);
                         ingredients[ingredients.size()-1]->HELD = true;
                         HOLDING_INGREDIENT = true;
                     }
