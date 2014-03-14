@@ -4,37 +4,20 @@
         <character name="shadow" id="0">
             <desire>green tea</desire>
             <timeLimit>40</timeLimit>
-        	<dialogue id="1">
-                <spoken>I AM SHADOW THING.</spoken>
-                <response id="1" dest ="2">What can I get you?</response>
-        	</dialogue>
-        	<dialogue id="2">
-                <spoken>I WANT TO ABSORB %DESIRE.</spoken>
-                <response id="1" dest="endConvo">Coming right up.</response>
+            <dialogue>
+                
+                <greeting>
+                        ...... h e lllo ...
+                </greeting>
+                
+                <first_order>
+                        Perhhaps I'll    take %order... yes...
+                </first_order>
+                
+                
+                
             </dialogue>
             <reward type="ingredient">glow worms</reward>
-        <character name="forgetful spirit" id="1">
-            <desire>green tea</desire>
-            <timeLimit>40</timeLimit>
-        	<dialogue id="1">
-                <spoken>Oh um, hello. Here um. Here I am.</spoken>
-                <response id="1" dest ="2">What can I get you?</response>
-        	</dialogue>
-        	<dialogue id="2">
-                <spoken>Hmm. What was it? Oh yes. I'll have some %DESIRE.</spoken>
-                <response id="1" dest="endConvo">Coming right up.</response>
-            </dialogue>
-            <reward type="ingredient">glow worms</reward>
-        </character>
-        <character name="franke glantz" id="2">
-            <desire>toasted glow worms</desire>
-            <timeLimit>20</timeLimit>
-            <reward type="cash">20</reward>
-        </character>
-        <character name="diego" id="3">
-            <desire>chazuke</desire>
-            <timeLimit>30</timeLimit>
-            <reward type="cash">30</reward>
         </character>
     </characters>
 </xml>
