@@ -39,7 +39,7 @@ public:
     int mody;
     
     animation_t anim;
-    ofImage * spriteSheet;
+    ofTexture * spriteSheet;
     
     ofxSpriteSheetRenderer * renderer;
     

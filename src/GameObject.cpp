@@ -23,16 +23,14 @@ GameObject::GameObject(int x, int y)
 GameObject::GameObject(int x, int y, ofImage * _spriteSheet)
 {
     pos.set(x,y);
-    spriteSheet = _spriteSheet;
+    spriteSheet = &_spriteSheet->getTextureReference();
     drawScale = 2;
     setup();
     angle = 0;
     
-    ofTexture * tex = &_spriteSheet->getTextureReference();
-    
     renderer = new ofxSpriteSheetRenderer(1,1000,0,26);
-    renderer->loadTexture(tex);
-    renderer->allocate(tex->getWidth(), GL_NEAREST);
+    renderer->loadTexture(spriteSheet);
+    renderer->allocate(spriteSheet->getWidth(), GL_NEAREST);
     
     anim = ingredientIdle;
 }
