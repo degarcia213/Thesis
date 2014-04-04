@@ -9,4 +9,6 @@ mochi + matcha powder = green tea mochi
 green tea mochi + sweet red bean paste = green tea daifuku
 daifuku + black sesame seeds = kurogoma daifuku
 crispy glow worms + kettle of boiled water = glow worm tea
+raw red beans + uncooked rice = TEST_DISH
+TEST_DISH + TEST_DISH = TEST_DISH_2
 <--- LAST --->

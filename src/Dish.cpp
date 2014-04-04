@@ -25,11 +25,14 @@ void Dish::setup()
 {
     GameObject::setup();
     HOLDABLE = true;
+    HELD = false;
     baseCount = 0;
     garnishCount = 0;
     HAS_BROTH = false;
+    HAS_SUBDISH = false;
     complexity = 0;
     balance = 0;
+    drawScale = 2;
     
     sweetness = 0;
     saltiness = 0;
@@ -57,17 +60,24 @@ void Dish::update()
     for (int b = 0; b < baseCount;b++)
     {
         base[b]->pos = pos;
+        base[b]->drawScale = drawScale;
     }
     if (HAS_BROTH)
     {
         broth->pos = pos;
+        broth->drawScale = drawScale;
     }
     for (int g = 0; g < garnishCount;g++)
     {
         garnish[g]->pos = pos;
+        garnish[g]->drawScale = drawScale;
     }
     
-    
+    if (HAS_SUBDISH)
+    {
+        subdish->pos = pos;
+        subdish->drawScale = drawScale;
+    }
 }
 
 void Dish::addIngredient(Ingredient * _i)
@@ -80,6 +90,7 @@ void Dish::addIngredient(Ingredient * _i)
         if (baseCount == 0)
         {
             base[0] = _i;
+            base[0]->HELD = false;
             baseCount ++;
             wasAdded = true;
             
@@ -89,18 +100,21 @@ void Dish::addIngredient(Ingredient * _i)
                 if (base[0]->form != BROTH)
                 {
                     broth = _i;
+                    broth->HELD = false;
                     HAS_BROTH = true;
                     wasAdded = true;
                 }
             } else if (base[0]->form == BROTH) {
                 broth = base[0];
                 base[0] = _i;
+                base[0]->HELD = false;
                 HAS_BROTH = true;
                 wasAdded = true;
             }
             else
             {
             base[baseCount] = _i;
+            base[baseCount]->HELD = false;
             baseCount ++;
             wasAdded = true;
             }
@@ -111,6 +125,7 @@ void Dish::addIngredient(Ingredient * _i)
         if (garnishCount < MAX_GARNISH_COUNT)
         {
             garnish[garnishCount] = _i;
+            garnish[garnishCount]->HELD = false;
             garnishCount+=1;
             wasAdded = true;
         }
@@ -239,7 +254,7 @@ string Dish::createName(){
     }
     else
     {
-        name = subdish;
+        name = subdish->displayName;
         
         if (baseCount > 0)
         {
@@ -425,17 +440,32 @@ void Dish::addSpriteToRenderer()
 {
     testApp* app = (testApp *)ofGetAppPtr();
     
+    if (HAS_SUBDISH)
+    {
+        subdish->anim = app->game.anims[subdishName];
+        subdish->addSpriteToRenderer();
+    }
+    
     for (int b = 0; b < baseCount;b++)
     {
+        if (!base[b]->USED_IN_SUBDISH)
+        {
         base[b]->addSpriteToRenderer();
+        }
     }
     if (HAS_BROTH)
     {
-        broth->addSpriteToRenderer();
+        if (!broth->USED_IN_SUBDISH)
+        {
+            broth->addSpriteToRenderer();
+        }
     }
     for (int g = 0; g < garnishCount;g++)
     {
+        if (!garnish[g]->USED_IN_SUBDISH)
+        {
         garnish[g]->addSpriteToRenderer();
+        }
     }
     
 }

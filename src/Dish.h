@@ -51,7 +51,8 @@ public:
     Ingredient * garnish[MAX_GARNISH_COUNT];
     
     bool HAS_SUBDISH;
-    string subdish;
+    string subdishName;
+    Ingredient * subdish;
     
     string type;
     

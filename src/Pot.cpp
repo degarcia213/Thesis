@@ -34,8 +34,12 @@ void Pot::setup()
     maxFill = 10;
     numContents = 0;
     maxContents = 3;
+    angle = 0;
     SELECTED = false;
     BURNER_ACTIVE = false;
+    READY_TO_POUR = false;
+    READY_TO_TRASH = false;
+    READY_TO_PLATE = false;
     
     mouthPos.set(pos.x - 40, pos.y - 40);
     mouthWidth = 80;
@@ -131,10 +135,36 @@ void Pot::update()
         }
     }
     
+    for (int c = 0; c < contents.size(); c++)
+    {
+        contents[c]->drawScale = drawScale;
+    }
+    
+    if (READY_TO_TRASH || READY_TO_PLATE)
+    {
+        READY_TO_POUR = true;
+    }
+    else
+    {
+        READY_TO_POUR = false;
+    }
+    
     if (!ON_GRILL)
     {
         BURNER_ACTIVE = false;
     }
+    
+    if (READY_TO_POUR)
+    {
+        angle = -45;
+    }
+    else
+    {
+        angle = 0;
+    }
+    
+    clampAngle();
+    
 }
 
 void Pot::mousePressed(int x, int y)
@@ -149,8 +179,24 @@ void Pot::mousePressed(int x, int y)
             bubbles[b].content->HELD = true;
             bubbles[b].content->angle = 0;
             app->game.ingredients.push_back(bubbles[b].content);
+            app->game.HOLDING_INGREDIENT = true;
             numContents--;
             break;
+        }
+    }
+}
+
+void Pot::removeFromPot(Ingredient * i)
+{
+    testApp * app = (testApp *)ofGetAppPtr();
+    app->game.ingredients.push_back(i);
+    
+    for (int c = 0; c < contents.size();c++)
+    {
+        if (contents[c]->ID == i->ID)
+        {
+            contents.erase(contents.begin()+c);
+            numContents--;
         }
     }
 }
@@ -206,6 +252,51 @@ void Pot::deselect()
     
 }
 
+void Pot::emptyToDish(Dish * d)
+{
+    
+    if (d == NULL)
+    {
+        testApp * app = (testApp *) ofGetAppPtr();
+        d = new Dish(app->game.plate.pos.x,app->game.plate.pos.y);
+        app->game.dishes.push_back(d);
+        d->setup();
+    }
+    while (numContents > 0)
+    {
+        for (int c = 0; c < contents.size(); c++)
+        {
+            removeFromPot(contents[c]);
+            d->addIngredient(contents[c]);
+            numContents--;
+        }
+    }
+    
+    contents.clear();
+}
+
+
+void Pot::emptyToTrash()
+{
+    for (int c = 0; c < contents.size();c++)
+    {
+        contents[c]->type = "removeMe";
+    }
+    
+    while (numContents > 0)
+    {
+        for (int c = 0; c < contents.size();c++)
+        {
+            removeFromPot(contents[c]);
+        }
+    }
+    
+    contents.clear();
+    FULL = false;
+    fillLvl = 0;
+    
+}
+
 void Pot::addSpriteToRenderer()
 {
     
@@ -215,8 +306,7 @@ void Pot::addSpriteToRenderer()
     {
         app->game.overlay(ofColor(4,11,68,127));
     }
-    
-    app->game.mainRenderer->addCenteredTile(&potBack, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
+    app->game.mainRenderer->addCenterRotatedTile(&potBack, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
     
     if (fillLvl > 0)
     {
@@ -260,8 +350,7 @@ void Pot::addSpriteToRenderer()
             app->game.mainRenderer->addCenteredTile(&waterPotFrontAnim, mouthPos.x + mouthWidth/2, ((mouthPos.y + mouthHeight/2) + (12*drawScale)) - (fillLvl * drawScale),0,F_NONE,drawScale,255,255,255,255);
         }
     }
-    
-    app->game.mainRenderer->addCenteredTile(&potFront, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
+    app->game.mainRenderer->addCenterRotatedTile(&potFront, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
     
     if (ON_GRILL && BURNER_ACTIVE)
     {

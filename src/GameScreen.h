@@ -16,6 +16,7 @@
 #include "Sink.h"
 #include "TrashCan.h"
 #include "Plate.h"
+#include "SpeechBubble.h"
 
 enum viewType{
     GAME,
@@ -84,8 +85,12 @@ public:
     
     
     Character * customerInStore;
+    int currentCustomer;
     
     ofxSpriteSheetRenderer * characterRenderer;
+    ofxSpriteSheetRenderer * speechBubbleRenderer;
+    
+    SpeechBubble speechBubble;
     
     Timer customerTimer;
     Timer nextCustomerTimer;
@@ -98,8 +103,12 @@ public:
     void addToPantry(string _ingredient);
     
     void checkRecipes(Dish * d);
+    
+    void combineDishes(Dish * d1, Dish * d2);
+    
     ofFile recipeList;
     ofFile knownList;
+    ofFile characterList;
     
     // -- drawing stuff
     ofImage bg;
@@ -158,7 +167,7 @@ public:
     int customerWidth;
     int headSize;
     
-    void serveCustomer();
+    void serveCustomer(Dish * _d);
     
     vector <string> customerNames;
     

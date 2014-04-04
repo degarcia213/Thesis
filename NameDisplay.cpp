@@ -82,6 +82,10 @@ void NameDisplay::draw()
     {
         pos.x -= (finalx - (5 * drawScale));
     }
+    else if ((pos.x + displayWidth) > ofGetWidth())
+    {
+        pos.x -= displayWidth/2;
+    }
     
     ofPushMatrix();
     ofTranslate(pos.x, pos.y);

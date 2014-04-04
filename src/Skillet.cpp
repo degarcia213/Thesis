@@ -96,6 +96,31 @@ void Skillet::update()
     {
         BURNER_ACTIVE = false;
     }
+    
+    for (int c = 0; c < contents.size(); c++)
+    {
+        contents[c]->drawScale = drawScale;
+    }
+    
+    if (READY_TO_TRASH)
+    {
+        READY_TO_POUR = true;
+    }
+    else
+    {
+        READY_TO_POUR = false;
+    }
+    
+    if (READY_TO_POUR)
+    {
+        angle = -45;
+    }
+    else
+    {
+        angle = 0;
+    }
+    
+    clampAngle();
 
 }
 
@@ -117,6 +142,7 @@ void Skillet::mousePressed(int x, int y)
             bubbles[b].content->HELD = true;
             bubbles[b].content->angle = 0;
             app->game.ingredients.push_back(bubbles[b].content);
+            app->game.HOLDING_INGREDIENT = true;
             numContents--;
             break;
         }
@@ -137,6 +163,43 @@ bool Skillet::add(Ingredient * _i)
     else
     {
         return false;
+    }
+    
+}
+
+void Skillet::emptyToTrash()
+{
+    for (int c = 0; c < contents.size();c++)
+    {
+        contents[c]->type = "removeMe";
+    }
+    
+    while (numContents > 0)
+    {
+        for (int c = 0; c < contents.size();c++)
+        {
+            removeFromSkillet(contents[c]);
+        }
+    }
+    
+    contents.clear();
+    
+    fillLvl = 0;
+}
+
+void Skillet::removeFromSkillet(Ingredient *i)
+{
+    
+    testApp * app = (testApp *)ofGetAppPtr();
+    app->game.ingredients.push_back(i);
+    
+    for (int c = 0; c < contents.size();c++)
+    {
+        if (contents[c]->ID == i->ID)
+        {
+            contents.erase(contents.begin()+c);
+            numContents--;
+        }
     }
     
 }
@@ -172,8 +235,7 @@ void Skillet::addSpriteToRenderer()
         app->game.overlay(ofColor(4,11,68,127));
     }
     
-    
-    app->game.mainRenderer->addCenteredTile(&skilletBack, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
+    app->game.mainRenderer->addCenterRotatedTile(&skilletBack, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
     
     if (ACTIVE && HAS_CONTENTS)
     {
@@ -189,8 +251,7 @@ void Skillet::addSpriteToRenderer()
     {
         app->game.mainRenderer->addCenteredTile(&sizzleAnim, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
     }
-    
-    app->game.mainRenderer->addCenteredTile(&skilletFront, pos.x, pos.y,0,F_NONE,drawScale,255,255,255,255);
+    app->game.mainRenderer->addCenterRotatedTile(&skilletFront, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
     
     if (ACTIVE)
     {

@@ -33,6 +33,7 @@ public:
     Sink();
     Sink(int x, int y);
     
+    void setup();
     void update();
     
     animation_t * waterAnim;

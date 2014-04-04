@@ -1,0 +1,59 @@
+{
+name: shadow
+
+greeting: hhell ooo
+greeting: it's... time
+greeting: I'm hhappy to have ... arrived
+
+happy farewell: I must... okay.. thank you.....
+happy farewell: Wow... such a fine meal...
+happy farewell: Perhapss I'll... See you again...
+
+angry farewell: N E v ER AGA IN WILL I APPEAR BEFORE youu
+
+order: Is there a... %REQUEST
+order: I'll... maybe have... %REQUEST... if that's...
+order: ...I'm... wanting    Can... %REQUEST?
+
+nice smell: A pleAssaNt odor... pReSents itSself
+nice smell: Hmm... yes...
+
+bad smell: whhat.. what is that terrible fragRancE
+bad smell: ...This is... Not what I had expected...
+
+good dish: This has fffffine flavours
+good dish: I'm feeling well... because of this.
+
+bad dish: WHA T HAVE YOU GIvEN ME?
+bad dish: YOU'RE NOT OF THISS WORLD aRE YOU?!
+
+request: raw genmaicha
+request: rotten ox meat
+request: sweet red bean paste
+
+likes: green tea
+
+hates: glow worms
+
+mouthx: 240
+mouthy: 280
+
+}
+
+{
+name: shiba
+greeting: NINA YOU BIG DUMB JERK YOU'RE SO ANNOYING
+
+bad smell: GrRrrRRrRrRrr!
+
+nice smell: Wan wan wan~!
+
+likes: rotten ox meat
+hates: green tea leaves
+
+request: uncooked rice
+
+mouthx:130
+mouthy:110
+}
+<!-- LAST -->

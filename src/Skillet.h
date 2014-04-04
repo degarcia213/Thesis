@@ -49,6 +49,8 @@ public:
     
     void select();
     void deselect();
+    void emptyToTrash();
+    void removeFromSkillet(Ingredient * i);
     
     void mousePressed(int x, int y);
     
@@ -79,6 +81,8 @@ public:
     bool IN_SINK;
     bool ON_GRILL;
     bool SELECTED;
+    bool READY_TO_TRASH;
+    bool READY_TO_POUR;
     
     int numContents;
     int maxContents;

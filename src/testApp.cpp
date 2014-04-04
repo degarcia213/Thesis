@@ -29,7 +29,10 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
   
+    ofPushMatrix();
+    ofSetWindowShape(960, 540);
     currentScreen->draw();
+    ofPopMatrix();
 }
 
 

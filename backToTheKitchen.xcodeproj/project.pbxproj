@@ -42,6 +42,7 @@
 		F16411AC18D0E54400AD5AD7 /* NameDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16411AA18D0E54400AD5AD7 /* NameDisplay.cpp */; };
 		F17AFE8818BFC16B00F270B4 /* Grinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8618BFC16B00F270B4 /* Grinder.cpp */; };
 		F17AFE8B18BFEBF000F270B4 /* Pestle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */; };
+		F1939DE418D3ACFD005C2FFA /* SpeechBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */; };
 		F1B12CF018C68EAF00EDE489 /* Sink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B12CEE18C68EAF00EDE489 /* Sink.cpp */; };
 		F1DA6C7418C62FAB00CFBE4A /* CuttingBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1DA6C7218C62FAB00CFBE4A /* CuttingBoard.cpp */; };
 		F1EBA6C1187E13DF003279BA /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6AE187E13DE003279BA /* Character.cpp */; };
@@ -141,6 +142,9 @@
 		F17AFE8718BFC16B00F270B4 /* Grinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grinder.h; sourceTree = "<group>"; };
 		F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pestle.cpp; sourceTree = "<group>"; };
 		F17AFE8A18BFEBF000F270B4 /* Pestle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pestle.h; sourceTree = "<group>"; };
+		F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpeechBubble.cpp; sourceTree = "<group>"; };
+		F1939DE318D3ACFD005C2FFA /* SpeechBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechBubble.h; sourceTree = "<group>"; };
+		F19DE35C18DE05E500358EDD /* characterList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = characterList.txt; sourceTree = "<group>"; };
 		F1B12CE818C6863F00EDE489 /* bg_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_temp.png; sourceTree = "<group>"; };
 		F1B12CE918C6863F00EDE489 /* counterTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = counterTop.png; sourceTree = "<group>"; };
 		F1B12CEA18C6863F00EDE489 /* cuttingBGImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cuttingBGImg.png; sourceTree = "<group>"; };
@@ -169,7 +173,6 @@
 		F1EBA6C0187E13DF003279BA /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		F1EBA6CE187E1572003279BA /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		F1EBA6CF187E1572003279BA /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		F1EBA6D0187E1572003279BA /* characters.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = characters.xml; sourceTree = "<group>"; };
 		F1EBA6D1187E1572003279BA /* dishes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dishes.txt; sourceTree = "<group>"; };
 		F1EBA6D2187E1572003279BA /* ingredients2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ingredients2.txt; sourceTree = "<group>"; };
 		F1EBA6D3187E1572003279BA /* ingredientsObtained.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ingredientsObtained.txt; sourceTree = "<group>"; };
@@ -382,6 +385,8 @@
 				F125937D18C9189500FF472C /* FoodBubble.h */,
 				F153E81018A4377A0048DFAC /* ServeBtn.cpp */,
 				F153E81118A4377A0048DFAC /* ServeBtn.h */,
+				F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */,
+				F1939DE318D3ACFD005C2FFA /* SpeechBubble.h */,
 			);
 			name = UI_Stuff;
 			sourceTree = "<group>";
@@ -426,7 +431,7 @@
 				F1B12CE718C6863F00EDE489 /* sprites */,
 				F1EBA6CE187E1572003279BA /* .gitkeep */,
 				F1EBA6CF187E1572003279BA /* bg.png */,
-				F1EBA6D0187E1572003279BA /* characters.xml */,
+				F19DE35C18DE05E500358EDD /* characterList.txt */,
 				F1EBA6D1187E1572003279BA /* dishes.txt */,
 				F1EBA6D2187E1572003279BA /* ingredients2.txt */,
 				F1EBA6D3187E1572003279BA /* ingredientsObtained.txt */,
@@ -552,6 +557,7 @@
 				F154637F18D0AEC000AFE9C5 /* TrashCan.cpp in Sources */,
 				F154638218D0B44500AFE9C5 /* Plate.cpp in Sources */,
 				F16411AC18D0E54400AD5AD7 /* NameDisplay.cpp in Sources */,
+				F1939DE418D3ACFD005C2FFA /* SpeechBubble.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

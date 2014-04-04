@@ -27,6 +27,8 @@ public:
     virtual void addSpriteToRenderer();
     virtual void mousePressed(int x, int y, int button);
     virtual void spawnDisplay(string _displayText);
+    virtual void changeAnim(animation_t _anim);
+    virtual void clampAngle();
     
     ofVec2f pos;
     int ID;
@@ -42,12 +44,14 @@ public:
     ofImage * spriteSheet;
     
     string displayName;
-    vector <NameDisplay> nameDisplays;
+    vector <NameDisplay *> nameDisplays;
     
     bool HOLDABLE;
     bool HELD;
     
     bool HIGHLIGHTED;
+    
+    
 };
 
 #endif /* defined(__backToTheKitchen__GameObject__) */

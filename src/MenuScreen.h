@@ -19,6 +19,8 @@ public:
     MenuScreen();
     MenuScreen(TimeHandler * _time);
     
+    string introText;
+    
     void setup();
     void update();
     void draw();

@@ -1,0 +1,36 @@
+<xml>
+    <characters>
+        <character name="shadow" id="0">
+            <dialogue>
+                <greetings>
+                    <1>
+                        ...... h e lllo ...
+                    </1>
+                    <2>
+                        The ssun's... quite strong today isn't- isnn't it..?
+                    </2>
+                </greetings>
+                
+                <first_order>
+                        Perhhaps I'll    take %order... yes...
+                </first_order>
+            </dialogue>
+        </character>
+        <character name="bilfbarf" id="1">
+            <dialogue>
+                <greetings>
+                    <1>
+                        ...... h e lllo ...
+                    </1>
+                    <2>
+                        The ssun's... quite strong today isn't- isnn't it..?
+                    </2>
+                </greetings>
+                
+                <first_order>
+                    Perhhaps I'll    take %order... yes...
+                </first_order>
+            </dialogue>
+        </character>
+    </characters>
+</xml>

@@ -22,5 +22,5 @@ void ServeBtn::action()
     SimpleButton::action();
     cout << "fart";
     testApp * app = (testApp *)ofGetAppPtr();
-    app->game.serveCustomer();
+    //app->game.serveCustomer();
 }

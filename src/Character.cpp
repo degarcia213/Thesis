@@ -18,7 +18,7 @@ Character::Character(): GameObject(){
     
 }
 
-Character::Character(int x, int y, int _difficulty):GameObject(x,y){
+Character::Character(int x, int y):GameObject(x,y){
     
     WANTS_FORM = false;
     WANTS_FLAVOR = false;
@@ -28,54 +28,123 @@ Character::Character(int x, int y, int _difficulty):GameObject(x,y){
     WANTS_NOODLES = false;
     WANTS_GRAINS = false;
     
-    difficulty = _difficulty;
-    
     anim = charIdleAnim;
+    
+    setup();
 }
 
 void Character::setup(){
     
     GameObject::setup();
+    
     decidePreferences();
     
-    currentDialogue = "Hi! I'm " + name + ".\n";
+    FADING_IN = false;
+    FADING_OUT = false;
+    LEFT_STORE = false;
+    SPEAKING = false;
+    TURNING_UP_NOSE = false;
+    LICKING_LIPS = false;
+    PLEASED_WITH_DISH = false;
+    maxSpeechTimer = 2;
+    speechTimer = maxSpeechTimer;
     
-    if (WANTS_FLAVOR)
-    {
-        currentDialogue += "I want something " + desiredFlavor + ".\n";
-    }
+    EATING = false;
+    eatTime = 0;
+    maxEatTime = 1;
     
-    if (WANTS_FORM)
-    {
-        if (WANTS_SOUP)
-        {
-            currentDialogue += "Let's make it soup.\n";
-        }
-        else if (WANTS_NOODLES)
-        {
-            currentDialogue += "Make sure it has noodles.\n";
-        }
-        else if (WANTS_GRAINS)
-        {
-            currentDialogue += "Some Grains would be nice.\n";
-        }
-    }
+    currentRequest = 0;
     
-    if (WANTS_INGREDIENT)
-    {
-        currentDialogue += "It'd be great if it had " + desiredIngredientType + ".\n";
-    }
+    alpha = 0;
     
-    if (WANTS_BALANCE)
-    {
-        currentDialogue += "I'm into the idea of something complex but nicely balanced.\n";
-    }
+    anim = charIdleAnim;
+}
+
+void Character::enter()
+{
+    currentDialogue = greetings[int(ofRandom(greetings.size()-1))];
+    changeAnim(charIdleAnim);
+    FADING_IN = true;
+}
+
+void Character::speak(animation_t _anim)
+{
+    SPEAKING = true;
+    speechTimer = maxSpeechTimer;
+    changeAnim(_anim);
+}
+
+void Character::changeAnim(animation_t _anim)
+{
+    GameObject::changeAnim(_anim);
     
-        anim = charIdleAnim;
+    anim.index += spriteSheetID * 13;
+    
 }
 
 void Character::update(){
+    GameObject::update();
     
+    if (FADING_IN)
+    {
+        if (alpha < 240)
+        {
+            alpha += int(.1 * (255-alpha));
+        }
+        else
+        {
+            FADING_IN = false;
+            makeRequest();
+            alpha = 255;
+        }
+    }
+    else if (FADING_OUT)
+    {
+        if (alpha > 5)
+        {
+            alpha -= (.75 * alpha);
+        } else
+        {
+            alpha = 0;
+            FADING_OUT = false;
+            LEFT_STORE = true;
+        }
+    }
+    
+    if (SPEAKING)
+    {
+        if (speechTimer > 0)
+        {
+            speechTimer -= 1/ofGetFrameRate();
+        }
+        else
+        {
+            SPEAKING = false;
+            TURNING_UP_NOSE = false;
+            LICKING_LIPS = false;
+            changeAnim(charIdleAnim);
+        }
+    }
+    
+    if (EATING)
+    {
+        if (eatTime > 0)
+        {
+            eatTime -= 1/ofGetFrameRate();
+        }
+        else
+        {
+            EATING = false;
+            eatTime = 0;
+            assessDish(beingEaten);
+        }
+    }
+    
+}
+
+void Character::prepareToEat()
+{
+    changeAnim(canEatAnim);
 }
 
 void Character::decidePreferences()
@@ -215,166 +284,253 @@ void Character::decidePreferences()
         }
     }
     
-    if (WANTS_INGREDIENT)
-    {
-        testApp * app = (testApp *)ofGetAppPtr();
-        desiredIngredientType = app->game.pantryContentsList[(int)ofRandom(app->game.pantry.size())];
-    }
-    
        
+    
+}
+
+void Character::eat(Dish * d)
+{
+    EATING = true;
+    eatTime = maxEatTime;
+    beingEaten = d;
+    
+    /// HERE WE CAN ADD DIFFERENT EAT ANIMATIONS BASED ON WHETHER OR NOT THE DISH IS SOMETHING THE CHARACTER IS DOWN WITH
+    changeAnim(eatAnim);
+    
+}
+
+void Character::assessIngredient(Ingredient *_i)
+{
+    changeAnim(eatAnim);
     
 }
 
 void Character::assessDish(Dish *_d)
 {
-    dishImpressions = "";
-    PLEASED_WITH_DISH = true;
-    bool PLEASED_WITH_FLAVOR = false;
-    bool PLEASED_WITH_FORM = false;
-    bool PLEASED_WITH_CONTENTS = false;
-    bool PLEASED_WITH_BALANCE = false;
+//    dishImpressions = "";
+//    PLEASED_WITH_DISH = true;
+//    bool PLEASED_WITH_FLAVOR = false;
+//    bool PLEASED_WITH_FORM = false;
+//    bool PLEASED_WITH_CONTENTS = false;
+//    bool PLEASED_WITH_BALANCE = false;
+//    
+//    if (WANTS_FLAVOR)
+//    {
+//        if (desiredFlavor == "sweet")
+//        {
+//            if (_d->sweetness == _d->prominentFlavor)
+//            {
+//                PLEASED_WITH_FLAVOR = true;
+//            }
+//        }
+//         else if (desiredFlavor == "salty")
+//        {
+//            if (_d->saltiness == _d->prominentFlavor)
+//            {
+//                PLEASED_WITH_FLAVOR = true;
+//            }
+//        }
+//         else if (desiredFlavor == "sour")
+//        {
+//            if (_d->sourness == _d->prominentFlavor)
+//            {
+//                PLEASED_WITH_FLAVOR = true;
+//            }
+//        }
+//         else if (desiredFlavor == "fatty")
+//        {
+//            if (_d->fattiness == _d->prominentFlavor)
+//            {
+//                PLEASED_WITH_FLAVOR = true;
+//            }
+//        }
+//          else if (desiredFlavor == "bitter")
+//        {
+//            if (_d->bitterness == _d->prominentFlavor)
+//            {
+//                PLEASED_WITH_FLAVOR = true;
+//            }
+//        }
+//           else if (desiredFlavor == "umami")
+//        {
+//            if (_d->umami == _d->prominentFlavor)
+//            {
+//                PLEASED_WITH_FLAVOR = true;
+//            }
+//        }
+//        if (!PLEASED_WITH_FLAVOR)
+//        {
+//            PLEASED_WITH_DISH = false;
+//            dishImpressions += "It's not " + desiredFlavor + " enough!\n";
+//        }
+//        else
+//        {
+//            dishImpressions += "Nice and " + desiredFlavor + "!\n";
+//        }
+//    }
+//    
+//    if (WANTS_BALANCE)
+//    {
+//        if (_d->complexity < 3)
+//        {
+//            PLEASED_WITH_DISH = false;
+//            dishImpressions += "This dish is too simple.\n";
+//        }
+//        
+//        if (_d->balance < 80)
+//        {
+//            PLEASED_WITH_DISH = false;
+//            dishImpressions += "It's not balanced!\n";
+//        }
+//    }
+//    
+//    if (WANTS_FORM)
+//    {
+//        if (WANTS_SOUP)
+//        {
+//            if (!_d->HAS_BROTH)
+//            {
+//                PLEASED_WITH_DISH = false;
+//                dishImpressions += "I wanted soup!\n";
+//            }
+//        }
+//        if (WANTS_NOODLES)
+//        {
+//            bool hasNoodles = false;
+//            for (int b = 0; b < _d->baseCount;b++)
+//            {
+//                if (_d->base[b]->form == NOODLES)
+//                {
+//                    hasNoodles = true;
+//                    string noodleType = _d->base[b]->type;
+//                    dishImpressions += "Mmm! My " + noodleType + "!\n";
+//                }
+//            }
+//            if (!hasNoodles)
+//            {
+//                PLEASED_WITH_DISH = false;
+//                dishImpressions += "I wanted noodles!\n";
+//            }
+//        }
+//        if (WANTS_GRAINS)
+//        {
+//            bool hasGrains = false;
+//            for (int b = 0; b < _d->baseCount;b++)
+//            {
+//                if (_d->base[b]->form == GRAINS)
+//                {
+//                    hasGrains = true;
+//                    string grainType = _d->base[b]->type;
+//                    dishImpressions += "The " + grainType + " makes for a nice grain.\n";
+//                }
+//            }
+//            if (!hasGrains)
+//            {
+//                PLEASED_WITH_DISH = false;
+//                dishImpressions += "I wanted grains!\n";
+//            }
+//
+//        }
+//    }
+//    
+//    if (WANTS_INGREDIENT)
+//    {
+//        if (!_d->CONTAINS(desiredIngredientType))
+//        {
+//            PLEASED_WITH_DISH = false;
+//            dishImpressions += "Didn't you hear me say I wanted " + desiredIngredientType + "?\n";
+//        }
+//        else
+//        {
+//            dishImpressions += "I really do love " + desiredIngredientType + ".\n";
+//        }
+//    }
     
-    if (WANTS_FLAVOR)
+    
+    if (beingEaten->displayName == requests[currentRequest]
+        || (beingEaten->HAS_SUBDISH && beingEaten->subdish->type == requests[currentRequest]))
     {
-        if (desiredFlavor == "sweet")
-        {
-            if (_d->sweetness == _d->prominentFlavor)
-            {
-                PLEASED_WITH_FLAVOR = true;
-            }
-        }
-         else if (desiredFlavor == "salty")
-        {
-            if (_d->saltiness == _d->prominentFlavor)
-            {
-                PLEASED_WITH_FLAVOR = true;
-            }
-        }
-         else if (desiredFlavor == "sour")
-        {
-            if (_d->sourness == _d->prominentFlavor)
-            {
-                PLEASED_WITH_FLAVOR = true;
-            }
-        }
-         else if (desiredFlavor == "fatty")
-        {
-            if (_d->fattiness == _d->prominentFlavor)
-            {
-                PLEASED_WITH_FLAVOR = true;
-            }
-        }
-          else if (desiredFlavor == "bitter")
-        {
-            if (_d->bitterness == _d->prominentFlavor)
-            {
-                PLEASED_WITH_FLAVOR = true;
-            }
-        }
-           else if (desiredFlavor == "umami")
-        {
-            if (_d->umami == _d->prominentFlavor)
-            {
-                PLEASED_WITH_FLAVOR = true;
-            }
-        }
-        if (!PLEASED_WITH_FLAVOR)
-        {
-            PLEASED_WITH_DISH = false;
-            dishImpressions += "It's not " + desiredFlavor + " enough!\n";
-        }
-        else
-        {
-            dishImpressions += "Nice and " + desiredFlavor + "!\n";
-        }
+        cout << "CURRENT REQUEST IS " + requests[currentRequest] + "\n";
+        PLEASED_WITH_DISH = true;
     }
-    
-    if (WANTS_BALANCE)
+    else
     {
-        if (_d->complexity < 3)
-        {
-            PLEASED_WITH_DISH = false;
-            dishImpressions += "This dish is too simple.\n";
-        }
-        
-        if (_d->balance < 80)
-        {
-            PLEASED_WITH_DISH = false;
-            dishImpressions += "It's not balanced!\n";
-        }
-    }
-    
-    if (WANTS_FORM)
-    {
-        if (WANTS_SOUP)
-        {
-            if (!_d->HAS_BROTH)
-            {
-                PLEASED_WITH_DISH = false;
-                dishImpressions += "I wanted soup!\n";
-            }
-        }
-        if (WANTS_NOODLES)
-        {
-            bool hasNoodles = false;
-            for (int b = 0; b < _d->baseCount;b++)
-            {
-                if (_d->base[b]->form == NOODLES)
-                {
-                    hasNoodles = true;
-                    string noodleType = _d->base[b]->type;
-                    dishImpressions += "Mmm! My " + noodleType + "!\n";
-                }
-            }
-            if (!hasNoodles)
-            {
-                PLEASED_WITH_DISH = false;
-                dishImpressions += "I wanted noodles!\n";
-            }
-        }
-        if (WANTS_GRAINS)
-        {
-            bool hasGrains = false;
-            for (int b = 0; b < _d->baseCount;b++)
-            {
-                if (_d->base[b]->form == GRAINS)
-                {
-                    hasGrains = true;
-                    string grainType = _d->base[b]->type;
-                    dishImpressions += "The " + grainType + " makes for a nice grain.\n";
-                }
-            }
-            if (!hasGrains)
-            {
-                PLEASED_WITH_DISH = false;
-                dishImpressions += "I wanted grains!\n";
-            }
-
-        }
-    }
-    
-    if (WANTS_INGREDIENT)
-    {
-        if (!_d->CONTAINS(desiredIngredientType))
-        {
-            PLEASED_WITH_DISH = false;
-            dishImpressions += "Didn't you hear me say I wanted " + desiredIngredientType + "?\n";
-        }
-        else
-        {
-            dishImpressions += "I really do love " + desiredIngredientType + ".\n";
-        }
+        PLEASED_WITH_DISH = false;
     }
     
     if (PLEASED_WITH_DISH)
     {
-        dishImpressions += "This will do just fine!";
+        dishImpressions = "This will do just fine!";
+        // here we can have a happy speak anim.
+        speak(charTalkAnim);
+        if (currentRequest < requests.size()-1)
+        {
+            currentRequest ++;
+            makeRequest();
+        }
+        else
+        {
+            leave();
+        }
     }
     else
     {
-        dishImpressions += "This is no good.";
+        dishImpressions = "I wanted " + requests[currentRequest] + "! This is no good.";
+        // here we can have an unhappy speak anim.
+        speak(charTalkAnim);
     }
     currentDialogue = dishImpressions;
+}
+
+void Character::turnUpNose()
+{
+    if (!TURNING_UP_NOSE)
+    {
+        if(badSmellDialogues.size() > 0)
+        {
+            currentDialogue = badSmellDialogues[int(ofRandom(badSmellDialogues.size()))];
+            speak(disgustTalkAnim);
+        }
+        else
+        {
+            changeAnim(disgustAnim);
+        }
+        TURNING_UP_NOSE = true;
+    }
+}
+
+void Character::lickLips()
+{
+    if (!LICKING_LIPS)
+    {
+        if (niceSmellDialogues.size()>0)
+        {
+            currentDialogue = niceSmellDialogues[int(ofRandom(niceSmellDialogues.size()))];
+            speak(salivateTalkAnim);
+        }
+        else
+        {
+            changeAnim(salivateAnim);
+        }
+        LICKING_LIPS = true;
+    }
+    
+}
+
+void Character::addRequest(string _requestText)
+{
+    requests.push_back(_requestText);
+}
+
+void Character::makeRequest()
+{
+    currentDialogue += "I think I'll have " + requests[currentRequest];
+    speak(charTalkAnim);
+}
+
+void Character::leave()
+{
+    FADING_OUT = true;
 }
 
 void Character::draw(){
@@ -387,7 +543,5 @@ void Character::addSpriteToRenderer()
 {
     testApp * app = (testApp *)ofGetAppPtr();
     
-    app->game.characterRenderer->addCenterRotatedTile(&anim, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,255);
-    
-    //here
+    app->game.characterRenderer->addCenterRotatedTile(&anim, pos.x, pos.y, 0, F_NONE, drawScale, angle, NULL, 255,255,255,alpha);
 }

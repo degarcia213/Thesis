@@ -51,6 +51,31 @@ void GameObject::update()
         drawScale = 2;
     }
     
+    clampAngle();
+    
+    for (int n = 0; n < nameDisplays.size();n++)
+    {
+        if (nameDisplays[n]->DEAD)
+
+        {
+         
+            nameDisplays.erase(nameDisplays.begin()+n);
+            
+        }
+    }
+    
+}
+
+void GameObject::draw()
+{
+    if (HIGHLIGHTED)
+    {
+        ofDrawBitmapString(displayName, pos);
+    }
+}
+
+void GameObject::clampAngle()
+{
     if (angle < 0)
     {
         angle += 360;
@@ -59,11 +84,6 @@ void GameObject::update()
     {
         angle -= 360;
     }
-    
-}
-
-void GameObject::draw()
-{
 }
 
 void GameObject::drawDebug()
@@ -76,12 +96,21 @@ void GameObject::drawDebug()
     
 }
 
+void GameObject::changeAnim(animation_t _anim)
+{
+    if (anim.index!=_anim.index)
+    {
+        anim = _anim;
+    }
+}
+
 void GameObject::spawnDisplay(string _displayText)
 {
     NameDisplay * nameDisplay = new NameDisplay(pos.x, pos.y, _displayText);
     
     testApp * app = (testApp *)ofGetAppPtr();
     app->game.uiDisplayText.push_back(nameDisplay);
+    nameDisplays.push_back(nameDisplay);
 }
 
 void GameObject::addSpriteToRenderer()

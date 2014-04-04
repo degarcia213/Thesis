@@ -16,10 +16,14 @@ Sink::Sink():GameObject()
 Sink::Sink(int x, int y):GameObject(x,y)
 {
     anim = sinkAnim;
-    nozzle1Pos.set(x-8,y-18);
-    nozzle2Pos.set(x+36,y-18);
     ACTIVE = false;
     
+}
+
+void Sink::setup()
+{
+    GameObject::setup();
+    size = 75;
 }
 
 void Sink::update()

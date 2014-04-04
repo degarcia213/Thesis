@@ -14,6 +14,7 @@
 #include "Sink.h"
 #include "Grill.h"
 #include "FoodBubble.h"
+#include "Dish.h"
 
 static animation_t potBack =
 {
@@ -64,6 +65,9 @@ public:
     void empty();
     void select();
     void deselect();
+    void emptyToTrash();
+    void emptyToDish(Dish * d);
+    void removeFromPot(Ingredient * i);
     
     void mousePressed(int x, int y);
     
@@ -95,6 +99,9 @@ public:
     bool IN_SINK;
     bool ON_GRILL;
     bool SELECTED;
+    bool READY_TO_POUR;
+    bool READY_TO_TRASH;
+    bool READY_TO_PLATE;
     
     int numContents;
     int maxContents;
