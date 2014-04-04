@@ -35,8 +35,9 @@ public:
     ofVec2f burner1;
     ofVec2f burner2;
     
-    ofVec2f knob1;
-    ofVec2f knob2;
+    ofVec2f hitBoxPos;
+    int width;
+    int height;
     
     bool B1_ACTIVE;
     bool B2_ACTIVE;

@@ -140,6 +140,8 @@ void Character::update(){
         }
     }
     
+    mouthPos = pos;
+    
 }
 
 void Character::prepareToEat()

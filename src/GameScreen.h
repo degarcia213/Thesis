@@ -17,6 +17,7 @@
 #include "TrashCan.h"
 #include "Plate.h"
 #include "SpeechBubble.h"
+#include "RecipeBook.h"
 
 enum viewType{
     GAME,
@@ -73,6 +74,33 @@ public:
     int shakeDampener;
     int shakeTimer;
     bool SHAKING;
+    
+    
+    // PARALLAX EFFECT and DAMPENING VALUES
+    float xTranslate;
+    float yTranslate;
+    float FGDamp;
+    float MGDamp;
+    float BGDamp;
+    float counterXPos;
+    float counterYPos;
+    float bgXPos;
+    float bgYPos;
+    ofVec2f heldObjPos;
+    
+    float lastMouseX;
+    float mouseX;
+    
+    float lastMouseY;
+    float mouseY;
+    
+    void parallax(int x, int y);
+    
+    vector <GameObject *> foregroundContent;
+    vector <GameObject *> midgroundContent;
+    vector <GameObject *> bgContent;
+    
+   
     
     bool GRINDING;
     bool HOLDING_INGREDIENT;
@@ -138,7 +166,8 @@ public:
     ofPoint backBtn;
     int bookWidth;
     int bookHeight;
-    string recipeBook;
+    string recipeBookTxt;
+    RecipeBook recipebook;
     vector <string> recipes;
     vector <string> desires;
     
@@ -186,6 +215,8 @@ public:
     Skillet skillet;
     
     Grill grill;
+    
+    RecipeBook recipeBook;
     
     Grinder grinder;
     Ingredient * foodInGrinder;

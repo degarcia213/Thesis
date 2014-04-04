@@ -18,6 +18,9 @@ SpeechBubble::SpeechBubble(int _x, int _y, int _width, int _height)
 {
     pos.set(_x,_y);
     
+    width = _width;
+    height = _height;
+    
     rows = _height/32;
     columns = _width/32;
     
@@ -27,7 +30,14 @@ SpeechBubble::SpeechBubble(int _x, int _y, int _width, int _height)
     
     drawScale = 2;
     
-    font.loadFont("fonts/pixel_maz.ttf", 24);
+    if (font.loadFont("fonts/pixel_maz.ttf", 24))
+    {
+        cout << "FONT LOADED!!!\n";
+    }
+    else
+    {
+        cout << "ERROR. SPEECH BUBBLE FONT FAILED TO LOAD.\n";
+    }
 }
 
 void SpeechBubble::setup()
@@ -62,6 +72,8 @@ void SpeechBubble::draw()
     {
         ofSetColor(textColor);
         font.drawString(text, pos.x + width/2,pos.y + height/2);
+        
+        
     }
 }
 

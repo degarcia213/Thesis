@@ -33,6 +33,9 @@ void Skillet::setup()
     maxContents = 1;
     SELECTED = false;
     BURNER_ACTIVE = false;
+    READY_TO_PLATE = false;
+    READY_TO_POUR = false;
+    READY_TO_TRASH = false;
     
     mouthPos.set(pos.x - 40, pos.y - 40);
     mouthWidth = 80;
@@ -102,7 +105,7 @@ void Skillet::update()
         contents[c]->drawScale = drawScale;
     }
     
-    if (READY_TO_TRASH)
+    if (READY_TO_TRASH || READY_TO_PLATE)
     {
         READY_TO_POUR = true;
     }
@@ -185,6 +188,30 @@ void Skillet::emptyToTrash()
     contents.clear();
     
     fillLvl = 0;
+}
+
+void Skillet::emptyToDish(Dish * d)
+{
+    
+    if (d == NULL)
+    {
+        testApp * app = (testApp *) ofGetAppPtr();
+        d = new Dish(app->game.plate.pos.x,app->game.plate.pos.y);
+        app->game.dishes.push_back(d);
+        app->game.foregroundContent.push_back(d);
+        d->setup();
+    }
+    while (numContents > 0)
+    {
+        for (int c = 0; c < contents.size(); c++)
+        {
+            removeFromSkillet(contents[c]);
+            d->addIngredient(contents[c]);
+            numContents--;
+        }
+    }
+    
+    contents.clear();
 }
 
 void Skillet::removeFromSkillet(Ingredient *i)

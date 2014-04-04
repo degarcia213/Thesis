@@ -14,6 +14,7 @@
 #include "Ingredient.h"
 #include "FoodBubble.h"
 #include "Grill.h"
+#include "Dish.h"
 
 static animation_t skilletBack =
 {
@@ -50,6 +51,7 @@ public:
     void select();
     void deselect();
     void emptyToTrash();
+    void emptyToDish(Dish * d);
     void removeFromSkillet(Ingredient * i);
     
     void mousePressed(int x, int y);
@@ -83,6 +85,7 @@ public:
     bool SELECTED;
     bool READY_TO_TRASH;
     bool READY_TO_POUR;
+    bool READY_TO_PLATE;
     
     int numContents;
     int maxContents;

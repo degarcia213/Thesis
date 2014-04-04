@@ -260,6 +260,7 @@ void Pot::emptyToDish(Dish * d)
         testApp * app = (testApp *) ofGetAppPtr();
         d = new Dish(app->game.plate.pos.x,app->game.plate.pos.y);
         app->game.dishes.push_back(d);
+        app->game.foregroundContent.push_back(d);
         d->setup();
     }
     while (numContents > 0)

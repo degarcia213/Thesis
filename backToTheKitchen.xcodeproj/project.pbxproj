@@ -43,6 +43,7 @@
 		F17AFE8818BFC16B00F270B4 /* Grinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8618BFC16B00F270B4 /* Grinder.cpp */; };
 		F17AFE8B18BFEBF000F270B4 /* Pestle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F17AFE8918BFEBEF00F270B4 /* Pestle.cpp */; };
 		F1939DE418D3ACFD005C2FFA /* SpeechBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */; };
+		F1969BFF18EF3FFB0005DB21 /* RecipeBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1969BFD18EF3FFA0005DB21 /* RecipeBook.cpp */; };
 		F1B12CF018C68EAF00EDE489 /* Sink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1B12CEE18C68EAF00EDE489 /* Sink.cpp */; };
 		F1DA6C7418C62FAB00CFBE4A /* CuttingBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1DA6C7218C62FAB00CFBE4A /* CuttingBoard.cpp */; };
 		F1EBA6C1187E13DF003279BA /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1EBA6AE187E13DE003279BA /* Character.cpp */; };
@@ -144,6 +145,8 @@
 		F17AFE8A18BFEBF000F270B4 /* Pestle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pestle.h; sourceTree = "<group>"; };
 		F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpeechBubble.cpp; sourceTree = "<group>"; };
 		F1939DE318D3ACFD005C2FFA /* SpeechBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechBubble.h; sourceTree = "<group>"; };
+		F1969BFD18EF3FFA0005DB21 /* RecipeBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RecipeBook.cpp; sourceTree = "<group>"; };
+		F1969BFE18EF3FFA0005DB21 /* RecipeBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeBook.h; sourceTree = "<group>"; };
 		F19DE35C18DE05E500358EDD /* characterList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = characterList.txt; sourceTree = "<group>"; };
 		F1B12CE818C6863F00EDE489 /* bg_temp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_temp.png; sourceTree = "<group>"; };
 		F1B12CE918C6863F00EDE489 /* counterTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = counterTop.png; sourceTree = "<group>"; };
@@ -333,6 +336,8 @@
 		F11AE22118B96E55006027D8 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F1969BFD18EF3FFA0005DB21 /* RecipeBook.cpp */,
+				F1969BFE18EF3FFA0005DB21 /* RecipeBook.h */,
 				F11AE22218B96F0C006027D8 /* Pot.cpp */,
 				F11AE22318B96F0C006027D8 /* Pot.h */,
 				F11AE22518B97F36006027D8 /* Skillet.cpp */,
@@ -385,8 +390,8 @@
 				F125937D18C9189500FF472C /* FoodBubble.h */,
 				F153E81018A4377A0048DFAC /* ServeBtn.cpp */,
 				F153E81118A4377A0048DFAC /* ServeBtn.h */,
-				F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */,
 				F1939DE318D3ACFD005C2FFA /* SpeechBubble.h */,
+				F1939DE218D3ACFD005C2FFA /* SpeechBubble.cpp */,
 			);
 			name = UI_Stuff;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				F154638218D0B44500AFE9C5 /* Plate.cpp in Sources */,
 				F16411AC18D0E54400AD5AD7 /* NameDisplay.cpp in Sources */,
 				F1939DE418D3ACFD005C2FFA /* SpeechBubble.cpp in Sources */,
+				F1969BFF18EF3FFB0005DB21 /* RecipeBook.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

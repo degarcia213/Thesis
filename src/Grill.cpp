@@ -24,7 +24,12 @@ void Grill::setup()
     GameObject::setup();
     anim = grillOff;
     B1_ACTIVE = false;
-    B2_ACTIVE = true;
+    B2_ACTIVE = false;
+    drawScale = 2;
+    
+    hitBoxPos.set(pos.x - (50 * drawScale),pos.y - (12 * drawScale));
+    width = 100 * drawScale;
+    height = 24 * drawScale;
 }
 
 void Grill::update()
@@ -33,15 +38,12 @@ void Grill::update()
     
     burner1.set(pos.x + (25 * drawScale),pos.y);
     burner2.set(pos.x - (25 * drawScale),pos.y);
-    
-    knob1.set(pos.x - (1 * drawScale),pos.y + (2 * drawScale));
-    knob2.set(pos.x + (3 * drawScale),pos.y - (4 * drawScale));
+    hitBoxPos.set(pos.x - (50 * drawScale),pos.y - (12 * drawScale));
     
 }
 
 void Grill::addSpriteToRenderer()
 {
-    
     testApp * app = (testApp *)ofGetAppPtr();
     
     app->game.mainRenderer->addCenteredTile(&anim, pos.x, pos.y,0,F_NONE,2,255,255,255,255);
@@ -54,8 +56,6 @@ void Grill::addSpriteToRenderer()
     {
         app->game.mainRenderer->addCenteredTile(&grillFlameAnim, burner2.x + (1 * drawScale), burner2.y- (1 * drawScale),0,F_NONE,2,255,255,255,255);
     }
-    
-    
 }
 
 void Grill::drawDebug()
@@ -65,7 +65,6 @@ void Grill::drawDebug()
     ofRect(burner1 - 1, 2, 2);
     ofRect(burner2 - 1, 2, 2);
     ofSetColor(255,0,0);
-    ofRect(knob1 - 1, 2, 2);
-    ofRect(knob2 - 1, 2, 2);
+    ofRect(hitBoxPos.x, hitBoxPos.y, width, height);
     
 }
