@@ -18,6 +18,7 @@ GameObject::GameObject(int x, int y)
 {
     pos.set(x,y);
     angle = 0;
+    drawScale = 2;
 }
 
 GameObject::GameObject(int x, int y, ofImage * _spriteSheet)

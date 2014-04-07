@@ -24,6 +24,8 @@ void Skillet::setup()
     GameObject::setup();
     size = 40;
     
+    drawScale = 2;
+    
     ACTIVE = false;
     HAS_CONTENTS = false;
     BEING_FILLED = false;
@@ -36,6 +38,9 @@ void Skillet::setup()
     READY_TO_PLATE = false;
     READY_TO_POUR = false;
     READY_TO_TRASH = false;
+    
+    selectedHitBoxWidth = 70 * drawScale;
+    selectedHitBoxHeight = 80 * drawScale;
     
     mouthPos.set(pos.x - 40, pos.y - 40);
     mouthWidth = 80;
@@ -124,7 +129,8 @@ void Skillet::update()
     }
     
     clampAngle();
-
+    
+    selectedHitBoxPos.set(pos.x - selectedHitBoxWidth/2, pos.y - (.8 * selectedHitBoxHeight));
 }
 
 void Skillet::draw()

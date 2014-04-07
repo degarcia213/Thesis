@@ -166,7 +166,7 @@ public:
     ofPoint backBtn;
     int bookWidth;
     int bookHeight;
-    string recipeBookTxt;
+    //string recipeBookTxt;
     RecipeBook recipebook;
     vector <string> recipes;
     vector <string> desires;

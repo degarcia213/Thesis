@@ -46,7 +46,7 @@ void Character::setup(){
     TURNING_UP_NOSE = false;
     LICKING_LIPS = false;
     PLEASED_WITH_DISH = false;
-    maxSpeechTimer = 2;
+    maxSpeechTimer = 3;
     speechTimer = maxSpeechTimer;
     
     EATING = false;
@@ -462,13 +462,13 @@ void Character::assessDish(Dish *_d)
     
     if (PLEASED_WITH_DISH)
     {
-        dishImpressions = "This will do just fine!";
+        currentDialogue = "This will do just fine!";
         // here we can have a happy speak anim.
-        speak(charTalkAnim);
         if (currentRequest < requests.size()-1)
         {
             currentRequest ++;
             makeRequest();
+            speak(charTalkAnim);
         }
         else
         {
@@ -477,11 +477,10 @@ void Character::assessDish(Dish *_d)
     }
     else
     {
-        dishImpressions = "I wanted " + requests[currentRequest] + "! This is no good.";
+        currentDialogue = "I wanted " + requests[currentRequest] + "! This is no good.";
         // here we can have an unhappy speak anim.
         speak(charTalkAnim);
     }
-    currentDialogue = dishImpressions;
 }
 
 void Character::turnUpNose()

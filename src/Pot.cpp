@@ -24,6 +24,8 @@ void Pot::setup()
     GameObject::setup();
     size = 40;
     
+    drawScale = 2;
+    
     ACTIVE = false;
     HAS_CONTENTS = false;
     BEING_FILLED = false;
@@ -40,6 +42,10 @@ void Pot::setup()
     READY_TO_POUR = false;
     READY_TO_TRASH = false;
     READY_TO_PLATE = false;
+    
+    selectedHitBoxWidth = 70 * drawScale;
+    selectedHitBoxHeight = 80 * drawScale;
+    
     
     mouthPos.set(pos.x - 40, pos.y - 40);
     mouthWidth = 80;
@@ -125,6 +131,8 @@ void Pot::update()
     mouthPos.set(pos.x - 40, pos.y - 40);
     mouthWidth = 80;
     mouthHeight = 20;
+    
+    selectedHitBoxPos.set(pos.x - selectedHitBoxWidth/2, pos.y - (.8 * selectedHitBoxHeight));
     
     if (SELECTED)
     {

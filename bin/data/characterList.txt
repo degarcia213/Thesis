@@ -2,7 +2,7 @@
 name: shadow
 
 greeting: hhell ooo
-greeting: it's... time
+greeting: it's... time. 
 greeting: I'm hhappy to have ... arrived
 
 happy farewell: I must... okay.. thank you.....
@@ -42,7 +42,7 @@ mouthy: 280
 
 {
 name: shiba
-greeting: NINA YOU BIG DUMB JERK YOU'RE SO ANNOYING
+greeting: Hello, I represent a dog. But my sprites are incomplete.
 
 bad smell: GrRrrRRrRrRrr!
 

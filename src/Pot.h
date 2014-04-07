@@ -80,6 +80,10 @@ public:
     int mouthWidth;
     int mouthHeight;
     
+    ofVec2f selectedHitBoxPos;
+    int selectedHitBoxWidth;
+    int selectedHitBoxHeight;
+    
     void addSpriteToRenderer();
     bool add(Ingredient * _i);
     

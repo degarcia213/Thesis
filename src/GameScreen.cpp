@@ -126,6 +126,8 @@ void GameScreen::setup(){
     
     recipeBook = RecipeBook(275 * drawScale,180 * drawScale);
     recipeBook.setup();
+    recipeBook.importRecipes();
+    recipeBook.revealRecipe("raw genmaicha");
     foregroundContent.push_back(&recipeBook);
     
     pot = Pot(50,444);
@@ -169,7 +171,7 @@ void GameScreen::setup(){
     knownList.close();
     recipeList.close();
     
-    setupRecipeBook();
+    //setupRecipeBook();
     
     customerNames.push_back("shadow");
     
@@ -371,22 +373,17 @@ void GameScreen::enterCustomer(int _id)
 
 void GameScreen::setupRecipeBook(){
     
-    recipeBookTxt.clear();
     string currentLine = allRecipes.getFirstLine();
     string knownLine = knownRecipes.getFirstLine();
     while (!allRecipes.isLastLine()){
         bool found = false;
         while (!knownRecipes.isLastLine()){
             if (currentLine.substr(currentLine.find("= ")+2,currentLine.length()-1) == knownLine){
-                recipeBookTxt += currentLine + "\n";
                 desires.push_back(currentLine.substr(currentLine.find("= ")+2,currentLine.length()-1));
                 found = true;
                 break;
             }
             knownLine = knownRecipes.getNextLine();
-        }
-        if (found == false){
-            recipeBookTxt += "????\n";
         }
         knownLine = knownRecipes.getFirstLine();
         currentLine = allRecipes.getNextLine();
@@ -604,6 +601,7 @@ void GameScreen::draw(){
         case RECIPES:
         {
             mainRenderer->draw();
+            recipeBook.draw();
         }
             break;
         case GAME:
@@ -919,6 +917,7 @@ void GameScreen::checkRecipes(Dish * d){
             }
             
             d->subdishName = recipeResult;
+            recipeBook.revealRecipe(recipeResult);
             d->subdish = new Ingredient(d->subdishName,d->pos.x,d->pos.y);
             d->subdish->setup();
             d->HAS_SUBDISH = true;
@@ -1011,6 +1010,8 @@ void GameScreen::parallax(int x, int y)
     }
     
     recipeBook.bigPos += ofVec2f(midgroundOffsetX,midgroundOffsetY);
+    recipeBook.leftPageTextLocation += ofVec2f(midgroundOffsetX,midgroundOffsetY);
+    recipeBook.rightPageTextLocation += ofVec2f(midgroundOffsetX,midgroundOffsetY);
     
     
     customerInStore->pos.x += midgroundOffsetX;
@@ -1056,6 +1057,24 @@ void GameScreen::mouseMoved(int x, int y ){
             else
             {
                 recipeBook.HIGHLIGHTED = false;
+            }
+            
+            if (ofVec2f(x,y).distance(pot.pos) < pot.size && pot.HAS_CONTENTS && !pot.SELECTED)
+            {
+                pot.select();
+            }
+            else if (pot.SELECTED && !pointOverlaps(ofVec2f(x,y), pot.selectedHitBoxPos,pot.selectedHitBoxWidth,pot.selectedHitBoxHeight))
+            {
+                pot.deselect();
+            }
+            
+            if (!pot.SELECTED && ofVec2f(x,y).distance(skillet.pos) < skillet.size && skillet.HAS_CONTENTS && !skillet.SELECTED)
+            {
+                skillet.select();
+            }
+            else if (skillet.SELECTED && !pointOverlaps(ofVec2f(x,y), skillet.selectedHitBoxPos,skillet.selectedHitBoxWidth,skillet.selectedHitBoxHeight))
+            {
+                skillet.deselect();
             }
             
             
@@ -1223,10 +1242,7 @@ void GameScreen::mousePressed(int x, int y, int button){
                 }
             }
             if (!HOLDING_INGREDIENT){
-                if (x > bookPos.x && y > bookPos.y && x < bookPos.x + bookWidth && y < bookPos.y + bookHeight){
-                    VIEW = RECIPES;
-                    break;
-                }
+                
                 for (int i = 0;i<pantry.size();i++){
                     if (ofPoint(x,y).distance(ofPoint(pantry[i]->pos.x, pantry[i]->pos.y))<pantry[i]->size){
                         addIngredient(pantryContentsList[i],x,y);
@@ -1294,6 +1310,7 @@ void GameScreen::mousePressed(int x, int y, int button){
                 if (recipeBook.HIGHLIGHTED)
                 {
                     VIEW = RECIPES;
+                    recipeBook.IN_USE = true;
                 }
                 
                 if (pointOverlaps(ofPoint(x,y), grill.hitBoxPos, grill.width, grill.height))
@@ -1388,16 +1405,16 @@ void GameScreen::mouseReleased(int x, int y, int button){
             }
             else if (pot.HELD)
             {
-                if (CONSIDERING_SELECTION)
-                {
-                    if (!pot.SELECTED && pot.HAS_CONTENTS)
-                    {
-                        pot.select();
-                        break;
-                    }
-                }
-                
-                else if (pot.pos.distance(sink.pos)<sink.size)
+//                if (CONSIDERING_SELECTION)
+//                {
+//                    if (!pot.SELECTED && pot.HAS_CONTENTS)
+//                    {
+//                        pot.select();
+//                        break;
+//                    }
+//                }
+//              // PUT ELSE BELOW  
+                if (pot.pos.distance(sink.pos)<sink.size)
                 {
                     pot.IN_SINK = true;
                     break;
@@ -1453,11 +1470,11 @@ void GameScreen::mouseReleased(int x, int y, int button){
              
                 if (CONSIDERING_SELECTION)
                 {
-                    if (!skillet.SELECTED && skillet.HAS_CONTENTS)
-                    {
-                        skillet.select();
-                        break;
-                    }
+//                    if (!skillet.SELECTED && skillet.HAS_CONTENTS)
+//                    {
+//                        skillet.select();
+//                        break;
+//                    }
                 }
                 else if (skillet.pos.distance(grill.burner1)<skillet.size)
                 {

@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "GameObject.h"
+#include "Recipe.h"
 
 static animation_t recipeBookAnim =
 {
@@ -33,10 +34,34 @@ public:
     RecipeBook(int x, int y);
     
     void update();
+    void turnPageFwd();
+    void turnPageBckwd();
+    void importRecipes();
+    void createPages();
+    void revealRecipe(string _dishName);
+    
+    void draw();
+    
+    ofFile recipeList;
+    ofBuffer allRecipes;
     
     ofVec2f hitBoxPos;
     int width;
     int height;
+    
+    bool IN_USE;
+    
+    ofVec2f leftPageTextLocation;
+    ofVec2f rightPageTextLocation;
+    
+    int currentPage;
+    int currentEntry;
+    int totalPages;
+    
+    ofTrueTypeFont recipeFont;
+    
+    vector <Recipe> recipes;
+    vector <string> pages;
     
     ofVec2f bigPos;
     ofVec2f bigHitBoxPos;
