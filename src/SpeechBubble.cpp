@@ -38,6 +38,8 @@ SpeechBubble::SpeechBubble(int _x, int _y, int _width, int _height)
     {
         cout << "ERROR. SPEECH BUBBLE FONT FAILED TO LOAD.\n";
     }
+    
+    font.setLineHeight(14);
 }
 
 void SpeechBubble::setup()

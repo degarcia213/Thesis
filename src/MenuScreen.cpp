@@ -25,7 +25,7 @@ MenuScreen::MenuScreen(TimeHandler * _time)
 void MenuScreen::setup()
 {
     
-    introText = "PRESS SPACEBAR TO COOK FOR SPIRITS OKAY??";
+    introText = "The following is a work in progress.\n\nYou play as a chef trapped in the spirit world after\noffendinng their culinary tastes. Use your mouse to\nmaster their ingredients and create their favorite dishes.\n\nPress the spacebar to begin.";
     
 }
 

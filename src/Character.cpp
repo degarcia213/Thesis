@@ -71,6 +71,10 @@ void Character::speak(animation_t _anim)
 {
     SPEAKING = true;
     speechTimer = maxSpeechTimer;
+    if(currentDialogue.length() > 35)
+    {
+        currentDialogue.insert(currentDialogue.find(" ",35)+1, "\n");
+    }
     changeAnim(_anim);
 }
 
