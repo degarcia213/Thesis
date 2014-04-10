@@ -19,9 +19,9 @@ void GameScreen::setup(){
     xTranslate = 0;
     yTranslate = 0;
     
-    FGDamp = 8;
-    MGDamp = 16;
-    BGDamp = 24;
+    FGDamp = 50;
+    MGDamp = 100;
+    BGDamp = 200;
     
     drawScale = 2;
     
@@ -491,14 +491,6 @@ void GameScreen::update(){
         enterCustomer(currentCustomer);
     }
     
-    
-    if (GRINDING){
-        SHAKING = true;
-    } else {
-        SHAKING = false;
-        shakeMod.set(0,0);
-    }
-    
     if (SHAKING){
         shakeMod.interpolate(shakeDest, .75);
         //shakeTimer --;
@@ -576,6 +568,8 @@ void GameScreen::update(){
 //--------------------------------------------------------------
 void GameScreen::draw(){
     ofPushMatrix();
+    ofTranslate(-shakeMod);
+    
     Screen::draw();
     
     customerTimer.draw();
@@ -1200,6 +1194,7 @@ void GameScreen::mouseDragged(int x, int y, int button){
         case GRINDERVIEW:
         {
             SHAKING = true;
+            shakeTimer = 20;
             foodInGrinder->grindTime++;
             pestle.mouseDragged(x,y);
         }
